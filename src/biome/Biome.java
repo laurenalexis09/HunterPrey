@@ -1,47 +1,42 @@
 package biome;
+import java.awt.Color;
+
 import shapes.Circle;
 
 public abstract class Biome {
-	int color;
-	Circle[] circles = new Circle[5];
-	Biome(int color){
-		this.color=color;
+	public Color circleColor;
+	public Color biomeColor;
+	public Circle[] circles = new Circle[5];
+	Biome(Color circleColor){
+		this.circleColor = circleColor;
 		spawnCircles();
 	}
 	
 	public void spawnCircles() {
 		for(int i=0;i<circles.length;i++)
-			circles[i] = new Circle(Math.random(),Math.random(),color);
-	}
-	
-	public int getColor() {
-		return color;
-	}
-	
-	public void draw() {
-		for (int i = 0; i < circles.length; i++){
-			circles[i].draw();
-			
-		}
+			circles[i] = new Circle(Math.random(),Math.random(),circleColor);
 	}
 	
 	public static Biome getBiome(String input) {
 		if(input.equalsIgnoreCase("Forest")){
-			return new ForestBiome(2);
+			return new ForestBiome();
 		}
 
 		if(input.equalsIgnoreCase("Arctic")){
-			return new ArcticBiome(1);
+			return new ArcticBiome();
 		}
 
 		if(input.equalsIgnoreCase("Mars")){
-			return new MarsBiome(3);
+			return new MarsBiome();
 		}
 
 		if(input.equalsIgnoreCase("Random")){
-			return new RandomBiome(4);
+			return new RandomBiome();
 		}
-		return new RandomBiome(4);//too lazy to input a biome? strobe lights it is then.
+		return new RandomBiome();//too lazy to input a biome? strobe lights it is then.
+	}
+	
+	public void update() {
 	}
 	
 }

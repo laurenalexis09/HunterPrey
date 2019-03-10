@@ -1,14 +1,12 @@
 package biome;
 
+import java.awt.Color;
+
 public class MarsBiome extends Biome{
 
-	MarsBiome(int color) {
-		super(color);
-		// TODO Auto-generated constructor stub
+	MarsBiome() {
+		super(new Color(153, 0, 0));
+		biomeColor = new Color(188, 42, 58);
 	}
 	
-	public void draw() {
-		super.draw();
-	}
-
 }
