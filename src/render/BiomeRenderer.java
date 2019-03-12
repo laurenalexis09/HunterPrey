@@ -1,7 +1,6 @@
 package render;
 
 import biome.Biome;
-import biome.RandomBiome;
 import utilities.StdDraw;
 
 public class BiomeRenderer {
@@ -11,16 +10,10 @@ public class BiomeRenderer {
 	public void render(Biome biome) {
 		StdDraw.setPenColor(biome.biomeColor);
 		StdDraw.filledSquare(5, 5, 5);
-		if(biome instanceof RandomBiome) {
-			for (int i = 0; i < biome.circles.length; i++){
-				circles.renderCircleWithRandomColor(biome.circles[i]);
-			}
+		for (int i = 0; i < biome.circles.length; i++){
+			circles.render(biome.circles[i]);
 		}
-		else {
-			for (int i = 0; i < biome.circles.length; i++){
-				circles.renderCircleWithCorrectColor(biome.circles[i]);
-			}
-		}
+
 	}
 
 }

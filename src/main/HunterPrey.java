@@ -11,7 +11,7 @@ public class HunterPrey {
 	World world;
 	WorldRenderer renderer;
 	
-	public static HunterPrey hunterprey;
+	public static HunterPrey hunterprey;//currently unused but acts as game instance singleton
 
 	boolean gamePaused = false;
 

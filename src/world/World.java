@@ -21,6 +21,7 @@ public class World {
 	}
 	
 	public void update() {
+		biome.update();
 		for(int i =0; i < prey.length; i++){
 			if(prey[i].isAlive())
 				prey[i].update();
