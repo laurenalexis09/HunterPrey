@@ -13,7 +13,7 @@ import utilities.StdDraw;
 public class HunterRenderer {
 
 	public void rendeWithPreyAlive(Hunter hunter) {
-		Biome biome = hunter.world.getCurrentBiome();
+		Biome biome = hunter.level.getCurrentBiome();
 		double x = hunter.x;
 		double y = hunter.y;
 		Color color1 = hunter.color1;
@@ -127,7 +127,7 @@ public class HunterRenderer {
 	}
 
 	public void renderWithNoPreyAlive(Hunter hunter) {
-		Biome biome = hunter.world.getCurrentBiome();
+		Biome biome = hunter.level.getCurrentBiome();
 		double x = hunter.x;
 		double y = hunter.y;
 		Color color1 = hunter.color1;

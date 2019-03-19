@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import biome.Biome;
-import entities.Difficulty;
+import level.Difficulty;
 import main.HunterPrey;
 import utilities.ColorUtilities;
 

@@ -1,43 +1,28 @@
 package entities;
 import java.awt.Color;
 
+import level.Level;
 import utilities.ColorUtilities;
 import utilities.StdDraw;
-import world.World;
 
-public class Prey extends Entity{
+public class Prey extends EntityLiving{
 
 	public Color color = ColorUtilities.getRandomColor();
 
-	public boolean alive = true;
 	public double xVelocity;
 	public double yVelocity;
 
-	public Prey(World worldIn, double x, double y){
-		super(worldIn);
+	public Prey(Level levelIn, double x, double y){
+		super(levelIn);
 		this.setPosition(x,y);
-	}
-
-	public double getX(){
-		return x;
-	}
-
-	public double getY(){
-		return y;
-	}
-	public boolean isAlive(){
-		return alive;
 	}
 
 	public double getRadius(){
 		return .01;
 	}
 
-	public boolean kill(){
-		return alive = false;
-	}
-
 	public void update(){
+		super.update();
 		double time = 0.04;
 		double mouseX = StdDraw.mouseX();
 		double mouseY = StdDraw.mouseY();

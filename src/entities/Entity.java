@@ -1,14 +1,14 @@
 package entities;
 
-import world.World;
+import level.Level;
 
 public abstract class Entity implements Updateable{
 	public double x;
 	public double y;
-	public World world;
+	public Level level;
 	
-	public Entity(World worldIn) {
-		this.world = worldIn;
+	public Entity(Level levelIn) {
+		this.level = levelIn;
 	}
 	
 	public void setPosition(double x,double y) {

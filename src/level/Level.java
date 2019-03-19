@@ -1,25 +1,28 @@
-package world;
+package level;
 
 import biome.Biome;
-import entities.Difficulty;
 import entities.Hunter;
 import entities.Prey;
 
-public class World {
-
-	public Hunter[] hunters = new Hunter[1];
+public class Level {
+	
+	public Hunter[] hunters;
 	public Prey[] prey = new Prey[1];
 	public Biome biome;
-	Difficulty dif;
-
-	public World(Biome biome,Difficulty dif) {
-		this.biome = biome;
-		this.dif = dif;	
-		spawnHunters();
-		spawnPrey();
-		
-	}
 	
+	public int levelTicks = 0;
+	public int portalSpawnTicks;
+	
+	boolean portalSpawned = false;
+
+	public Level(LevelConfiguration config,Biome biome) {
+		this.biome = biome;
+		this.portalSpawnTicks = config.timeTillPortalSpawn;
+		hunters = new Hunter[config.hunterAmount];
+		spawnHunters(config.hunterSpeed);
+		spawnPrey();
+	}
+
 	public void update() {
 		biome.update();
 		for(int i =0; i < prey.length; i++){
@@ -29,12 +32,12 @@ public class World {
 		for(int i =0; i < hunters.length; i++){
 			hunters[i].update();
 		}
-
+		levelTicks++;
 	}
 
-	private void spawnHunters() {
+	private void spawnHunters(double speed) {
 		for(int i = 0; i < hunters.length; i++)
-			hunters[i]= new Hunter(this,Math.random(),Math.random(),dif.getSpeed()); 
+			hunters[i]= new Hunter(this,Math.random(),Math.random(),speed); 
 	}
 
 	private void spawnPrey() {
@@ -56,13 +59,5 @@ public class World {
 	public Prey[] getPreyArray() {
 		return prey;
 	}
-
+	
 }
-
-
-
-
-
-
-
-

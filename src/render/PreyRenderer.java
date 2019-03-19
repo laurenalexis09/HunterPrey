@@ -13,7 +13,7 @@ import utilities.StdDraw;
 public class PreyRenderer {
 
 	public void render(Prey prey) {
-		Biome biome = prey.world.getCurrentBiome();
+		Biome biome = prey.level.getCurrentBiome();
 		double x = prey.x;
 		double y = prey.y;
 		Color colors = prey.color;

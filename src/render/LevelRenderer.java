@@ -3,18 +3,18 @@ package render;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import level.Level;
 import utilities.StdDraw;
-import world.World;
 
-public class WorldRenderer {
+public class LevelRenderer {
 
-	World world;
+	Level level;
 
 	private HunterRenderer hunter = new HunterRenderer();
 	private PreyRenderer prey = new PreyRenderer();
 	private BiomeRenderer biomes = new BiomeRenderer();
 
-	public WorldRenderer(World worldIn){
+	public LevelRenderer(Level levelIn){
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
@@ -22,7 +22,11 @@ public class WorldRenderer {
 			e.printStackTrace();
 		}
 		StdDraw.enableDoubleBuffering();
-		this.world = worldIn;
+		this.level = levelIn;
+	}
+	
+	public void setLevel(Level level) {
+		this.level = level;
 	}
 
 	public void render() {
@@ -38,24 +42,24 @@ public class WorldRenderer {
 	}
 	
 	private void renderBiome() {
-		biomes.render(world.biome);
+		biomes.render(level.biome);
 	}
 	
 	private void renderPrey() {
-		for (int i = 0; i < world.prey.length; i++){
-			prey.render(world.prey[i]);
+		for (int i = 0; i < level.prey.length; i++){
+			prey.render(level.prey[i]);
 		}
 	}
 	
 	private void renderHunters() {
-		if(world.isAtLeastOnePreyAlive()) {
-			for(int i = 0; i < world.hunters.length; i++){
-				hunter.rendeWithPreyAlive(world.hunters[i]);
+		if(level.isAtLeastOnePreyAlive()) {
+			for(int i = 0; i < level.hunters.length; i++){
+				hunter.rendeWithPreyAlive(level.hunters[i]);
 			}
 		}
 		else {
-			for(int i = 0; i < world.hunters.length; i++){
-				hunter.renderWithNoPreyAlive(world.hunters[i]);
+			for(int i = 0; i < level.hunters.length; i++){
+				hunter.renderWithNoPreyAlive(level.hunters[i]);
 			}
 		}
 	}
