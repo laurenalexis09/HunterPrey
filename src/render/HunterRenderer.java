@@ -192,7 +192,7 @@ public class HunterRenderer {
 			StdDraw.filledCircle(x, y-0.005, getRadius()/5);
 			StdDraw.filledCircle(x+.01, y, getRadius()/5);
 			StdDraw.filledCircle(x-.01, y, getRadius()/5);
-			StdDraw.text(x+0.05, y+0.05, "Yummy! 😋 ");
+			//StdDraw.text(x+0.05, y+0.05, "Yummy! 😋 ");
 		}		
 		else if (biome instanceof MarsBiome){
 			StdDraw.setPenColor(StdDraw.GREEN);
@@ -224,7 +224,7 @@ public class HunterRenderer {
 			StdDraw.filledCircle(x, y-0.005, getRadius()/5);
 			StdDraw.filledCircle(x+.01, y, getRadius()/5);
 			StdDraw.filledCircle(x-.01, y, getRadius()/5);
-			StdDraw.text(x+0.05, y+0.05, "Yummy! 😋 ");
+			//StdDraw.text(x+0.05, y+0.05, "Yummy! 😋 ");
 		}		
 		else if (biome instanceof RandomBiome) {
 			StdDraw.setPenColor(color1);
@@ -256,7 +256,7 @@ public class HunterRenderer {
 			StdDraw.filledCircle(x, y-0.005, getRadius()/5);
 			StdDraw.filledCircle(x+.01, y, getRadius()/5);
 			StdDraw.filledCircle(x-.01, y, getRadius()/5);
-			StdDraw.text(x+0.05, y+0.05, "Yummy! 😋 ");
+			//StdDraw.text(x+0.05, y+0.05, "Yummy! 😋 ");
 		}
 	}
 

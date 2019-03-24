@@ -12,7 +12,12 @@ import utilities.StdDraw;
 
 public class PreyRenderer {
 
+	private HealthBarRenderer healthBar = new HealthBarRenderer();
+	
 	public void render(Prey prey) {
+		
+		healthBar.Render(prey);
+		
 		Biome biome = prey.level.getCurrentBiome();
 		double x = prey.x;
 		double y = prey.y;
@@ -113,3 +118,5 @@ public class PreyRenderer {
 	}
 	
 }
+
+
