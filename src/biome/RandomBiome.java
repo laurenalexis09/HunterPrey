@@ -9,15 +9,4 @@ public class RandomBiome extends Biome{
 		super(ColorUtilities.getRandomColor());
 		biomeColor = ColorUtilities.getRandomColor();
 	}
-	
-	public void update() {
-		for(int i=0;i<circles.length;i++)
-			((StrobeCircle) circles[i]).update();
-	}
-	
-	public void spawnCircles() {
-		for(int i=0;i<circles.length;i++)
-			circles[i] = new StrobeCircle(Math.random(),Math.random(),circleColor);
-	}
-
 }

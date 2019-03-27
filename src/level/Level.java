@@ -15,8 +15,8 @@ public class Level {
 	
 	boolean portalSpawned = false;
 
-	public Level(LevelConfiguration config,Biome biome) {
-		this.biome = biome;
+	public Level(LevelConfiguration config) {
+		biome = config.levelBiome;
 		this.portalSpawnTicks = config.timeTillPortalSpawn;
 		hunters = new Hunter[config.hunterAmount];
 		spawnHunters(config.hunterSpeed);

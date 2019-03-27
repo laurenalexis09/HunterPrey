@@ -18,14 +18,11 @@ public class HunterPrey {
 	boolean gameRunning = true;
 
 	int currentLevel = 0;
-	Biome biome;
-	Difficulty dif;
 
-	public HunterPrey(Biome biome,Difficulty dif){
-		this.biome = biome;
-		this.dif = dif;
+
+	public HunterPrey(){
 		hunterprey = this;
-		level = new Level(LevelList.levels[currentLevel],biome);
+		level = new Level(LevelList.levels[currentLevel]);
 		renderer = new LevelRenderer(level);
 	}
 
@@ -41,7 +38,7 @@ public class HunterPrey {
 					endGame();
 					break;
 				}
-				level = new Level(LevelList.levels[currentLevel],biome);
+				level = new Level(LevelList.levels[currentLevel]);
 				renderer.setLevel(level);
 			}
 		}
