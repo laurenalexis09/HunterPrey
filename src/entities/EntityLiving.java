@@ -5,6 +5,9 @@ import level.Level;
 public abstract class EntityLiving extends Entity{
 
 	boolean isHurt = false;
+	int hurtCooldown = 5;
+	int currentHurt = 0;
+	
 	public double health = 100;
 	public	double maxHealth = health;
 
@@ -20,11 +23,18 @@ public abstract class EntityLiving extends Entity{
 			setDead();
 			return;
 		}
-		isHurt = false;
+		if(isHurt)
+			updateHurt();
+	}
+	
+	private void updateHurt() {
+		currentHurt--;
+		if(currentHurt==0)
+			isHurt = false;
 	}
 
 	public void attemptDamageFromSource(EntityLiving source) {
-		if(!canBeDamaged()) {
+		if(!canBeDamaged() || isHurt) {
 			return;
 		}
 		else {
@@ -34,6 +44,8 @@ public abstract class EntityLiving extends Entity{
 
 	public void damageFromSource(double damage) {
 		this.health-=damage;
+		this.isHurt = true;
+		this.currentHurt = hurtCooldown;
 		System.out.println("Remaining Health: " + health);
 	}
 
