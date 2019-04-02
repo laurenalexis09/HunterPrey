@@ -1,7 +1,10 @@
 package entities;
 
+import java.util.HashMap;
+
 import level.Level;
 import powerups.Powerup;
+import powerups.PowerupEffect;
 import utilities.MathUtility;
 
 public abstract class EntityLiving extends Entity{
@@ -16,6 +19,8 @@ public abstract class EntityLiving extends Entity{
 	public double speed;
 
 	public double attackDamage = 10;
+	
+	HashMap<Powerup,PowerupEffect> activePowerups = new HashMap<>();
 
 	public EntityLiving(Level levelIn) {
 		super(levelIn);
