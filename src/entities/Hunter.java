@@ -5,18 +5,16 @@ import level.Level;
 import utilities.ColorUtilities;
 public class Hunter extends EntityLiving{
 	
-	private double speed;
-	
 	public Color color1 = ColorUtilities.getRandomColor(); 
 
 	public double getRadius(){
 		return .02;
 	}
 	
-	public Hunter(Level levelIn, double x, double y, double speed){
+	public Hunter(Level levelIn, double x, double y){
 		super(levelIn);
 		this.setPosition(x, y);
-		this.speed = speed;
+		this.speed = levelIn.config.hunterSpeed;
 	}
 
 	public void update(){
@@ -63,6 +61,10 @@ public class Hunter extends EntityLiving{
 	}
 	
 	public boolean canBeDamaged() {
+		return false;
+	}
+	
+	public boolean canPickUpPowerup() {
 		return false;
 	}
 

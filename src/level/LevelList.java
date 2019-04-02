@@ -1,7 +1,6 @@
 package level;
 
 import biome.Biome;
-import biome.RandomBiome;
 
 public class LevelList {
 	public static LevelConfiguration[] levels = new LevelConfiguration[] {

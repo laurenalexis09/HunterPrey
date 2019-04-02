@@ -1,7 +1,5 @@
 package main;
 
-import biome.Biome;
-import level.Difficulty;
 import level.Level;
 import level.LevelList;
 import menus.GameOverMenu;

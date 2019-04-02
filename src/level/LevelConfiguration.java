@@ -5,7 +5,7 @@ import biome.Biome;
 public class LevelConfiguration{
 
 	int hunterAmount;
-	double hunterSpeed;
+	public double hunterSpeed;
 	int timeTillPortalSpawn;
 	Biome levelBiome;
 

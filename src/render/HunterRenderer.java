@@ -2,18 +2,13 @@ package render;
 
 import java.awt.Color;
 
-import biome.ArcticBiome;
-import biome.Biome;
-import biome.ForestBiome;
-import biome.MarsBiome;
-import biome.RandomBiome;
 import entities.Hunter;
 import utilities.StdDraw;
 
 public class HunterRenderer {
 
 	public void rendeWithPreyAlive(Hunter hunter) {
-		Biome biome = hunter.level.getCurrentBiome();
+		//Biome biome = hunter.level.getCurrentBiome();
 		double x = hunter.x;
 		double y = hunter.y;
 		Color color1 = hunter.color1;

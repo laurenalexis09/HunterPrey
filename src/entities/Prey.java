@@ -15,6 +15,7 @@ public class Prey extends EntityLiving{
 	public Prey(Level levelIn, double x, double y){
 		super(levelIn);
 		this.setPosition(x,y);
+		this.speed = .04;
 	}
 
 	public double getRadius(){
@@ -45,8 +46,8 @@ public class Prey extends EntityLiving{
 			yVelocity = Math.min( yVelocity, 0.3 );
 		}			
 
-		x = x + xVelocity*time;
-		y = y + yVelocity*time;
+		x = x + xVelocity*speed;
+		y = y + yVelocity*speed;
 
 		if( y < 0 )		
 			y = 1;					

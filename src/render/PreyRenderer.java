@@ -2,11 +2,6 @@ package render;
 
 import java.awt.Color;
 
-import biome.ArcticBiome;
-import biome.Biome;
-import biome.ForestBiome;
-import biome.MarsBiome;
-import biome.RandomBiome;
 import entities.Prey;
 import utilities.StdDraw;
 
@@ -18,7 +13,7 @@ public class PreyRenderer {
 		
 		healthBar.Render(prey);
 		
-		Biome biome = prey.level.getCurrentBiome();
+		//Biome biome = prey.level.getCurrentBiome();
 		double x = prey.x;
 		double y = prey.y;
 		Color colors = prey.color;

@@ -1,11 +1,18 @@
 package level;
 
+import java.util.LinkedList;
+
 import biome.Biome;
 import entities.Hunter;
 import entities.Prey;
+import powerups.HealthPowerup;
+import powerups.Powerup;
 
 public class Level {
 	
+	public LevelConfiguration config;
+	
+	public LinkedList<Powerup> powerups = new LinkedList<>();
 	public Hunter[] hunters;
 	public Prey[] prey = new Prey[1];
 	public Biome biome;
@@ -16,6 +23,7 @@ public class Level {
 	boolean portalSpawned = false;
 
 	public Level(LevelConfiguration config) {
+		this.config = config;
 		biome = config.levelBiome;
 		this.portalSpawnTicks = config.timeTillPortalSpawn;
 		hunters = new Hunter[config.hunterAmount];
@@ -25,6 +33,7 @@ public class Level {
 
 	public void update() {
 		biome.update();
+		trySpawnPowerup();
 		for(int i =0; i < prey.length; i++){
 			if(prey[i].isAlive())
 				prey[i].update();
@@ -33,11 +42,32 @@ public class Level {
 			hunters[i].update();
 		}
 		levelTicks++;
+		cleanupDeadEntities();
+	}
+
+	private void cleanupDeadEntities() {
+		for (int i = powerups.size()-1; i>=0; i--){
+			if(!powerups.get(i).isAlive())
+				powerups.remove(i);
+		}
+		
+	}
+
+	private void trySpawnPowerup() {
+		if(Math.random()<.05) {
+			spawnRandomPowerup();
+		}
+		
+	}
+
+	private void spawnRandomPowerup() {
+		powerups.add(new HealthPowerup(this,Math.random(),Math.random()));
+		
 	}
 
 	private void spawnHunters(double speed) {
 		for(int i = 0; i < hunters.length; i++)
-			hunters[i]= new Hunter(this,Math.random(),Math.random(),speed); 
+			hunters[i]= new Hunter(this,Math.random(),Math.random()); 
 	}
 
 	private void spawnPrey() {

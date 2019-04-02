@@ -1,0 +1,24 @@
+package powerups;
+
+import entities.EntityLiving;
+import level.Level;
+
+public class HealthPowerup extends Powerup{
+	
+	private int healthBoost = 50;
+
+	public HealthPowerup(Level levelIn, double x, double y) {
+		super(levelIn);
+		this.setPosition(x, y);
+	}
+	
+	public void applyPowerupToEntity(EntityLiving entity){
+		entity.addHealth(healthBoost);
+		this.setDead();
+	}
+	
+	public boolean isPowerupInstant() {
+		return true;
+	}
+	
+}

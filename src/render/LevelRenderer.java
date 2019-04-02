@@ -13,6 +13,7 @@ public class LevelRenderer {
 	private HunterRenderer hunter = new HunterRenderer();
 	private PreyRenderer prey = new PreyRenderer();
 	private BiomeRenderer biomes = new BiomeRenderer();
+	private PowerupRenderer powerups = new PowerupRenderer();
 
 	public LevelRenderer(Level levelIn){
 		try {
@@ -34,6 +35,7 @@ public class LevelRenderer {
 		StdDraw.setPenColor(8, 146, 208);
 
 		renderBiome();
+		renderPowerups();
 		renderPrey();
 		renderHunters();
 
@@ -43,6 +45,12 @@ public class LevelRenderer {
 	
 	private void renderBiome() {
 		biomes.render(level.biome);
+	}
+	
+	private void renderPowerups() {
+		for (int i = 0; i < level.powerups.size(); i++){
+			powerups.render(level.powerups.get(i));
+		}
 	}
 	
 	private void renderPrey() {

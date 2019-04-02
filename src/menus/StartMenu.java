@@ -1,19 +1,11 @@
 package menus;
 import java.awt.Color;
 
-import javax.swing.Box;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-import biome.Biome;
-import level.Difficulty;
 import main.HunterPrey;
-import utilities.ColorUtilities;
 
 public class StartMenu {
 	Color color1 = new Color(126, 160, 255);

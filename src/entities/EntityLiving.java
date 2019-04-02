@@ -1,6 +1,8 @@
 package entities;
 
 import level.Level;
+import powerups.Powerup;
+import utilities.MathUtility;
 
 public abstract class EntityLiving extends Entity{
 
@@ -10,8 +12,9 @@ public abstract class EntityLiving extends Entity{
 	
 	public double health = 100;
 	public	double maxHealth = health;
+	
+	public double speed;
 
-	public boolean alive = true;
 	public double attackDamage = 10;
 
 	public EntityLiving(Level levelIn) {
@@ -23,8 +26,28 @@ public abstract class EntityLiving extends Entity{
 			setDead();
 			return;
 		}
+		if(this.canPickUpPowerup())
+			pickUpNearbyPowerups();
+		manageHealth();
 		if(isHurt)
 			updateHurt();
+	}
+	
+	private void manageHealth() {
+		if(health>maxHealth)
+			health=maxHealth;
+	}
+
+	private void pickUpNearbyPowerups() {
+		for(int i=0;i<level.powerups.size();i++) {
+			Powerup power = level.powerups.get(i);
+			if(MathUtility.getDistance(x,y,power.x,power.y)<.05)
+				power.applyPowerupToEntity(this);
+		}
+	}
+	
+	public void addHealth(double amount) {
+		this.health += amount;
 	}
 	
 	private void updateHurt() {
@@ -52,13 +75,9 @@ public abstract class EntityLiving extends Entity{
 	public boolean canBeDamaged() {
 		return true;
 	}
-
-	public boolean isAlive(){
-		return alive;
-	}
-
-	public boolean setDead(){
-		return alive = false;
+	
+	public boolean canPickUpPowerup() {
+		return true;
 	}
 
 }
