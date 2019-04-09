@@ -29,6 +29,9 @@ public abstract class Biome {
 		if(input.equalsIgnoreCase("Desert")){
 			return new DesertBiome();
 		}
+		if(input.equalsIgnoreCase("Ocean")){
+			return new OceanBiome();
+		}
 
 		if(input.equalsIgnoreCase("Random")){
 			return new RandomBiome();
