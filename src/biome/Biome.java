@@ -6,7 +6,7 @@ import shapes.Circle;
 public abstract class Biome {
 	public Color circleColor;
 	public Color biomeColor;
-	public Circle[] circles = new Circle[5];
+	public Circle[] circles = new Circle[20];
 	Biome(Color circleColor){
 		this.circleColor = circleColor;
 		spawnCircles();
@@ -26,8 +26,8 @@ public abstract class Biome {
 			return new ArcticBiome();
 		}
 
-		if(input.equalsIgnoreCase("Mars")){
-			return new MarsBiome();
+		if(input.equalsIgnoreCase("Desert")){
+			return new DesertBiome();
 		}
 
 		if(input.equalsIgnoreCase("Random")){
