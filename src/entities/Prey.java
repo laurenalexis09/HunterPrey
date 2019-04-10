@@ -32,14 +32,14 @@ public class Prey extends EntityLiving{
 		if( mouseX > 0 && mouseX < 1 && mouseY > 0 && mouseY < 1 )
 		{ 
 			if( mouseX > x )
-				xVelocity += 0.015;
+				xVelocity += 0.025;
 			else
-				xVelocity -= 0.015;
+				xVelocity -= 0.025;
 
 			if( mouseY > y )
-				yVelocity += 0.015;
+				yVelocity += 0.025;
 			else
-				yVelocity -= 0.015;
+				yVelocity -= 0.025;
 
 			xVelocity = Math.max( xVelocity, -0.3 );
 			xVelocity = Math.min( xVelocity, 0.3 );

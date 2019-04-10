@@ -46,7 +46,7 @@ public abstract class EntityLiving extends Entity{
 	private void pickUpNearbyPowerups() {
 		for(int i=0;i<level.powerups.size();i++) {
 			Powerup power = level.powerups.get(i);
-			if(MathUtility.getDistance(x,y,power.x,power.y)<.05)
+			if(MathUtility.getDistance(x,y,power.x,power.y)<.5)
 				power.applyPowerupToEntity(this);
 		}
 	}
