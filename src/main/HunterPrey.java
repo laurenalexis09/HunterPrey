@@ -7,15 +7,15 @@ import render.LevelRenderer;
 
 public class HunterPrey {
 
-	Level level;
-	LevelRenderer renderer;
+	public Level level;
+	public LevelRenderer renderer;
 
 	public static HunterPrey hunterprey;//currently unused but acts as game instance singleton
 
 	//boolean gamePaused = false;
 	boolean gameRunning = true;
 
-	int currentLevel = 0;
+	public int currentLevel = 0;
 
 
 	public HunterPrey(){
@@ -30,11 +30,10 @@ public class HunterPrey {
 			if(shouldGameEnd()) {
 				endGame();
 			}
-			if(level.levelTicks>=level.portalSpawnTicks) {
+			if(level.levelCompleted) {
 				currentLevel++;
 				if(currentLevel==LevelList.getTotalLevels()) {
 					endGame();
-					break;
 				}
 				level = new Level(LevelList.levels[currentLevel]);
 				renderer.setLevel(level);

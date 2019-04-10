@@ -2,7 +2,9 @@ package entities;
 import java.awt.Color;
 
 import level.Level;
+import powerups.Powerup;
 import utilities.ColorUtilities;
+import utilities.MathUtility;
 import utilities.StdDraw;
 
 public class Prey extends EntityLiving{
@@ -58,6 +60,8 @@ public class Prey extends EntityLiving{
 			x = 1;
 		else if( x > 1 )		
 			x = 0;
-		
+		if(level.portalSpawned)
+			if(MathUtility.getDistance(x,y,level.nextLevelPortal.x,level.nextLevelPortal.y)<.05)
+				level.nextLevelPortal.activatePortal();
 	}	
 }

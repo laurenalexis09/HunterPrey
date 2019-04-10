@@ -14,6 +14,7 @@ public class LevelRenderer {
 	private PreyRenderer prey = new PreyRenderer();
 	private BiomeRenderer biomes = new BiomeRenderer();
 	private PowerupRenderer powerups = new PowerupRenderer();
+	private PortalRenderer portal = new PortalRenderer();
 
 	public LevelRenderer(Level levelIn){
 		try {
@@ -38,6 +39,8 @@ public class LevelRenderer {
 		renderPowerups();
 		renderPrey();
 		renderHunters();
+		if(level.portalSpawned)
+			portal.render(level.nextLevelPortal);
 
 		StdDraw.show();
 		StdDraw.pause(40);

@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import biome.Biome;
 import entities.Hunter;
+import entities.Portal;
 import entities.Prey;
 import powerups.HealthPowerup;
 import powerups.Powerup;
@@ -17,10 +18,14 @@ public class Level {
 	public Prey[] prey = new Prey[1];
 	public Biome biome;
 	
+	public Portal nextLevelPortal;
+	
 	public int levelTicks = 0;
 	public int portalSpawnTicks;
 	
-	boolean portalSpawned = false;
+	public boolean portalSpawned = false;
+	
+	public boolean levelCompleted = false;
 
 	public Level(LevelConfiguration config) {
 		this.config = config;
@@ -42,6 +47,11 @@ public class Level {
 			hunters[i].update();
 		}
 		levelTicks++;
+		if(levelTicks==portalSpawnTicks) {
+			System.out.println("Spawned");
+			portalSpawned=true;
+			spawnPortal();
+		}
 		cleanupDeadEntities();
 	}
 
@@ -54,6 +64,8 @@ public class Level {
 	}
 
 	private void trySpawnPowerup() {
+		if(portalSpawned)
+			return;
 		if(Math.random()<.05) {
 			spawnRandomPowerup();
 		}
@@ -88,6 +100,14 @@ public class Level {
 	
 	public Prey[] getPreyArray() {
 		return prey;
+	}
+
+	public void spawnPortal() {
+		nextLevelPortal = new Portal(this,Math.random(),Math.random());
+	}
+	
+	public void completeLevel() {
+		levelCompleted = true;
 	}
 	
 }
