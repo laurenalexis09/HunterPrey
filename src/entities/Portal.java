@@ -8,7 +8,7 @@ import main.HunterPrey;
 
 public class Portal extends Entity{
 	
-	public Color color = new Color(255,255,255);
+	public Color color = new Color(0,0,0);
 
 	public Portal(Level levelIn,double x,double y) {
 		super(levelIn);
