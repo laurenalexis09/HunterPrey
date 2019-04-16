@@ -43,7 +43,6 @@ public class LevelRenderer {
 			portal.render(level.nextLevelPortal);
 
 		StdDraw.show();
-		StdDraw.pause(40);
 	}
 	
 	private void renderBiome() {

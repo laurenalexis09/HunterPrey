@@ -16,8 +16,6 @@ public class HealthBarRenderer {
 		StdDraw.setPenColor(0, 0, 0);
 		StdDraw.textLeft(0, 0.01, "Health: "+health);
 		
-		
-		
 	}
 	
 }
