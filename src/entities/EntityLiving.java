@@ -10,6 +10,7 @@ import utilities.MathUtility;
 public abstract class EntityLiving extends Entity{
 
 	boolean isHurt = false;
+	boolean canBeDamaged=true;
 	int hurtCooldown = 5;
 	int currentHurt = 0;
 	
@@ -62,7 +63,7 @@ public abstract class EntityLiving extends Entity{
 	}
 
 	public void attemptDamageFromSource(EntityLiving source) {
-		if(!canBeDamaged() || isHurt) {
+		if(!canBeDamaged || isHurt) {
 			return;
 		}
 		else {
@@ -77,12 +78,13 @@ public abstract class EntityLiving extends Entity{
 		System.out.println("Remaining Health: " + health);
 	}
 
-	public boolean canBeDamaged() {
-		return true;
-	}
+
 	
 	public boolean canPickUpPowerup() {
 		return true;
 	}
-
+	public void invincible () {
+		canBeDamaged=true;
+		
+	}
 }

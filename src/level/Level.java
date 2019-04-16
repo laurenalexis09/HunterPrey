@@ -7,6 +7,7 @@ import entities.Hunter;
 import entities.Portal;
 import entities.Prey;
 import powerups.HealthPowerup;
+import powerups.InvincibilityPowerup;
 import powerups.Powerup;
 
 public class Level {
@@ -74,7 +75,7 @@ public class Level {
 
 	private void spawnRandomPowerup() {
 		powerups.add(new HealthPowerup(this,Math.random(),Math.random()));
-		
+		powerups.add(new InvincibilityPowerup(this,Math.random(),Math.random()));
 	}
 
 	private void spawnHunters(double speed) {
