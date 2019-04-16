@@ -38,6 +38,12 @@ public class HunterPrey {
 				level = new Level(LevelList.levels[currentLevel]);
 				renderer.setLevel(level);
 			}
+			try {
+				Thread.sleep((long) (1000/30f));
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

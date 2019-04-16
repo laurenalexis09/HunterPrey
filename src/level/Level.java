@@ -6,9 +6,12 @@ import biome.Biome;
 import entities.Hunter;
 import entities.Portal;
 import entities.Prey;
+import entities.RandomHunter;
+import entities.TrackerHunter;
 import powerups.HealthPowerup;
 import powerups.InvincibilityPowerup;
 import powerups.Powerup;
+import utilities.MathUtility;
 
 public class Level {
 	
@@ -33,8 +36,8 @@ public class Level {
 		biome = config.levelBiome;
 		this.portalSpawnTicks = config.timeTillPortalSpawn;
 		hunters = new Hunter[config.hunterAmount];
-		spawnHunters(config.hunterSpeed);
 		spawnPrey();
+		spawnHunters(config.hunterSpeed);
 	}
 
 	public void update() {
@@ -70,7 +73,6 @@ public class Level {
 		if(Math.random()<.05) {
 			spawnRandomPowerup();
 		}
-		
 	}
 
 	private void spawnRandomPowerup() {
@@ -79,8 +81,9 @@ public class Level {
 	}
 
 	private void spawnHunters(double speed) {
-		for(int i = 0; i < hunters.length; i++)
-			hunters[i]= new Hunter(this,Math.random(),Math.random()); 
+		hunters[0] = new TrackerHunter(this,Math.random(),Math.random()); 
+		for(int i = 1; i < hunters.length; i++)
+			hunters[i]= new RandomHunter(this,Math.random(),Math.random()); 
 	}
 
 	private void spawnPrey() {
@@ -109,6 +112,20 @@ public class Level {
 	
 	public void completeLevel() {
 		levelCompleted = true;
+	}
+	
+	public Prey getClosestPreyToLocation(double x,double y) {
+		double distance = 2;
+		double tempDistance;
+		Prey closest = null;
+		for(int i=0;i<prey.length;i++) {
+			tempDistance = MathUtility.getDistance(x, y, prey[i].x, prey[i].y);
+			if(tempDistance<distance) {
+				closest = prey[i];
+				distance = tempDistance;
+			}
+		}
+		return closest;
 	}
 	
 }
