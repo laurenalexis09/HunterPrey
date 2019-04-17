@@ -1,6 +1,8 @@
 package entities;
 
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import level.Level;
 import powerups.Powerup;
@@ -13,14 +15,16 @@ public abstract class EntityLiving extends Entity{
 	boolean canBeDamaged=true;
 	int hurtCooldown = 5;
 	int currentHurt = 0;
-	
+
 	public double health = 100;
 	public	double maxHealth = health;
-	
+
 	public double speed;
 
 	public double attackDamage = 10;
-	
+
+
+
 	HashMap<Powerup,PowerupEffect> activePowerups = new HashMap<>();
 
 	public EntityLiving(Level levelIn) {
@@ -38,7 +42,7 @@ public abstract class EntityLiving extends Entity{
 		if(isHurt)
 			updateHurt();
 	}
-	
+
 	private void manageHealth() {
 		if(health>maxHealth)
 			health=maxHealth;
@@ -51,11 +55,11 @@ public abstract class EntityLiving extends Entity{
 				power.applyPowerupToEntity(this);
 		}
 	}
-	
+
 	public void addHealth(double amount) {
 		this.health += amount;
 	}
-	
+
 	private void updateHurt() {
 		currentHurt--;
 		if(currentHurt==0)
@@ -79,12 +83,26 @@ public abstract class EntityLiving extends Entity{
 	}
 
 
-	
+
 	public boolean canPickUpPowerup() {
 		return true;
 	}
 	public void invincible () {
-		canBeDamaged=true;
-		
+		canBeDamaged=false;
+		Timer time= new Timer();
+		time.schedule(new TimerTask() {
+
+			
+			public void run() {
+			
+				canBeDamaged=true;
+			}
+			
+		}, 5000);
 	}
+
 }
+
+
+
+

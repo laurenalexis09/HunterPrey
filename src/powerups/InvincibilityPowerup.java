@@ -6,6 +6,7 @@ import entities.EntityLiving;
 import level.Level;
 
 
+
 public class InvincibilityPowerup extends Powerup {
 	
 
@@ -19,5 +20,6 @@ public class InvincibilityPowerup extends Powerup {
 		this.setDead();
 		
 	}
+	
 
 }
