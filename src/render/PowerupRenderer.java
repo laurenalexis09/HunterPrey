@@ -1,5 +1,6 @@
 package render;
 
+import powerups.InvincibilityPowerup;
 import powerups.Powerup;
 import utilities.StdDraw;
 
