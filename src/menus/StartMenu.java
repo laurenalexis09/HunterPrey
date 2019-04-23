@@ -23,11 +23,8 @@ public class StartMenu {
 
 
 		do {
-
 			button.update();
-
 			StdDraw.enableDoubleBuffering();
-
 			DrawBackground();
 
 			Font font1 = new Font("Helvetica", Font.BOLD, 60);
@@ -55,10 +52,7 @@ public class StartMenu {
 			DrawBigBear(0.33, 0.16, 0.15);
 			DrawBigBun(1/1.5, 0.13, 0.12);
 
-
-
 			button.draw();
-
 
 			StdDraw.show();
 

@@ -46,7 +46,7 @@ public class EndGameButton {
 		StdDraw.setPenColor(StdDraw.BOOK_BLUE);
 		StdDraw.filledCircle(x, y, radius);
 		StdDraw.setPenColor(StdDraw.WHITE);
-		StdDraw.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, 10));
+		StdDraw.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, 12));
 		StdDraw.text(x, y, "Exit");
 
 	}
