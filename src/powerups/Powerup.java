@@ -8,7 +8,7 @@ import level.Level;
 
 public abstract class Powerup extends Entity{
 	
-	public Color color = new Color(255,0,0);
+	public Color color;
 
 	public Powerup(Level levelIn) {
 		super(levelIn);
@@ -16,8 +16,10 @@ public abstract class Powerup extends Entity{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
+	}
+	
+	public void setColor(Color color) {
+		this.color = color;
 	}
 	
 	public abstract void applyPowerupToEntity(EntityLiving entity);

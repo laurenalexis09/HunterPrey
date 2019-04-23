@@ -1,5 +1,7 @@
 package powerups;
 
+import java.awt.Color;
+
 import entities.EntityLiving;
 import level.Level;
 
@@ -10,6 +12,7 @@ public class HealthPowerup extends Powerup{
 	public HealthPowerup(Level levelIn, double x, double y) {
 		super(levelIn);
 		this.setPosition(x, y);
+		this.setColor(new Color(255,0,0));
 	}
 	
 	public void applyPowerupToEntity(EntityLiving entity){

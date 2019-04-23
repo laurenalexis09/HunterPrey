@@ -6,7 +6,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-import entities.NewGameButton;
 import main.HunterPrey;
 import utilities.MathUtility;
 import utilities.StdDraw;

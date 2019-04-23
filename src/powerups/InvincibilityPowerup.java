@@ -1,19 +1,16 @@
 package powerups;
 
-import java.util.Timer;
+import java.awt.Color;
 
 import entities.EntityLiving;
 import level.Level;
-import utilities.StdDraw;
 
-
-
-public class InvincibilityPowerup extends Powerup {
-	
+public class InvincibilityPowerup extends Powerup {	
 
 	public InvincibilityPowerup(Level levelIn, double x, double y) {
 		super(levelIn);
 		this.setPosition(x, y);
+		this.setColor(new Color(0,0,255));
 	}
 	
 	public void applyPowerupToEntity(EntityLiving entity) {
