@@ -16,7 +16,7 @@ public class GameOverMenu {
 	
 	public static int instanceCode = 0;
 	
-	public GameOverMenu() {
+	public GameOverMenu(HunterPrey game) {
 		
 		NewGameButton button = new NewGameButton();
 		button.setX(0.25);
@@ -74,7 +74,7 @@ public class GameOverMenu {
 			}
 
 		}while(true);
-		new HunterPrey().run();
+		game.resetGame();
 	}
 
 	public static void DrawBigBear(double x, double y, double radius) {

@@ -13,7 +13,7 @@ public class HunterPrey {
 	public static HunterPrey hunterprey;//currently unused but acts as game instance singleton
 
 	//boolean gamePaused = false;
-	boolean gameRunning = true;
+	GameState state = GameState.RUNNING;
 
 	public int currentLevel = 0;
 
@@ -25,7 +25,7 @@ public class HunterPrey {
 	}
 
 	public void run() {
-		while(gameRunning) {
+		while(state==GameState.RUNNING) {
 			runGameLoop();
 			if(shouldGameEnd()) {
 				endGame();
@@ -46,6 +46,14 @@ public class HunterPrey {
 			}
 		}
 	}
+	
+	public void resetGame() {
+		currentLevel = 0;
+		level = new Level(LevelList.levels[currentLevel]);
+		renderer = new LevelRenderer(level);
+		state = GameState.RUNNING;
+		run();
+	}
 
 	private void runGameLoop() {
 		level.update();
@@ -61,8 +69,12 @@ public class HunterPrey {
 	}
 
 	public void endGame() {
-		new GameOverMenu();
-		gameRunning = false;
+		new GameOverMenu(this);
+		state = GameState.OVER;
+	}
+	
+	public enum GameState{
+		RUNNING,PAUSED,OVER,QUIT
 	}
 
 }

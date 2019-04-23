@@ -23,8 +23,6 @@ public abstract class EntityLiving extends Entity{
 
 	public double attackDamage = 10;
 
-
-
 	HashMap<Powerup,PowerupEffect> activePowerups = new HashMap<>();
 
 	public EntityLiving(Level levelIn) {
@@ -82,11 +80,10 @@ public abstract class EntityLiving extends Entity{
 		System.out.println("Remaining Health: " + health);
 	}
 
-
-
 	public boolean canPickUpPowerup() {
 		return true;
 	}
+	
 	public void invincible () {
 		canBeDamaged=false;
 		Timer time= new Timer();
