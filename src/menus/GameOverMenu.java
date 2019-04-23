@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import entities.EndGameButton;
-import entities.NewGameButton;
+import menus.NewGameButton;
 import main.HunterPrey;
 import utilities.MathUtility;
 import utilities.StdDraw;
