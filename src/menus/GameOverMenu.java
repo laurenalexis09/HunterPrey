@@ -22,7 +22,7 @@ public class GameOverMenu {
 		button.setX(0.25);
 		button.setY(0.25);
 		button.setRadius(0.07);
-		button.setFontSize(10);
+		button.setFontSize(12);
 		EndGameButton button2 = new EndGameButton();
 		button2.setX(0.75);
 		button2.setY(0.25);

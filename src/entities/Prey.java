@@ -51,15 +51,15 @@ public class Prey extends EntityLiving{
 		x = x + xVelocity*speed;
 		y = y + yVelocity*speed;
 
-		if( y < 0 )		
-			y = 1;					
-		else if( y > 1 )
-			y = 0;
-
-		if( x < 0 )
-			x = 1;
-		else if( x > 1 )		
-			x = 0;
+		if ( x + getRadius() > 1)
+			x = 1 - getRadius();
+		if (x - getRadius () < 0)
+			x=0+ getRadius(); 
+		if (y + getRadius()> 1)
+			y = 1 - getRadius();
+		if (y - getRadius()< 0)
+			y = 0 + getRadius();
+		
 		if(level.portalSpawned)
 			if(MathUtility.getDistance(x,y,level.nextLevelPortal.x,level.nextLevelPortal.y)<.05)
 				level.nextLevelPortal.activatePortal();

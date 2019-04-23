@@ -18,7 +18,8 @@ public class PowerupRenderer {
 		StdDraw.filledRectangle(power.x, power.y+0.005, 0.005, 0.02);
 		StdDraw.filledCircle(power.x, power.y, 0.02);
 		StdDraw.setPenColor();
-		StdDraw.line(power.x-0.02, power.y, power.x, power.y);
-		StdDraw.line(power.x-0.019, power.y-0.008, power.x, power.y-0.008);
+		StdDraw.line(power.x-0.02, power.y, power.x-0.003, power.y);
+		StdDraw.line(power.x-0.019, power.y+0.008, power.x-0.003, power.y+0.008);
+		StdDraw.line(power.x-0.019, power.y-0.008, power.x-0.003, power.y-0.008);
 	}
 }
