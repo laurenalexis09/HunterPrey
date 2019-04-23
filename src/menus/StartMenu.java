@@ -14,8 +14,11 @@ import utilities.StdDraw;
 public class StartMenu {
 	Color color1 = new Color(126, 160, 255);
 
-	public StartMenu(){
+	public StartMenu(){	
+		
 		NewGameButton button = new NewGameButton();
+		button.setX(0.94);
+		button.setY(0.06);
 
 		button = new NewGameButton();
 
@@ -59,7 +62,6 @@ public class StartMenu {
 
 
 			StdDraw.show();
-			StdDraw.pause(40);
 
 			StdDraw.clear();
 
