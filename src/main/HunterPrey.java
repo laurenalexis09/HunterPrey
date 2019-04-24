@@ -15,7 +15,7 @@ public class HunterPrey {
 	//boolean gamePaused = false;
 	GameState state = GameState.RUNNING;
 
-	public int currentLevel = 0;
+	public static int currentLevel = 0;
 
 
 	public HunterPrey(){
