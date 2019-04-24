@@ -25,12 +25,9 @@ public abstract class Biome {
 		if(input.equalsIgnoreCase("Arctic")){
 			return new ArcticBiome();
 		}
-
-		if(input.equalsIgnoreCase("Desert")){
-			return new DesertBiome();
-		}
-		if(input.equalsIgnoreCase("Ocean")){
-			return new OceanBiome();
+		
+		if(input.equalsIgnoreCase("Mars")){
+			return new MarsBiome();
 		}
 
 		if(input.equalsIgnoreCase("Random")){
