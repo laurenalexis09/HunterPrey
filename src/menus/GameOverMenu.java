@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import entities.EndGameButton;
+import level.LevelList;
 import menus.NewGameButton;
 import main.HunterPrey;
 import utilities.MathUtility;
@@ -50,6 +51,17 @@ public class GameOverMenu {
 			StdDraw.text(0.502, 0.7302, "Thanks for playing");
 
 			DrawBigBear(0.50, 0.50, 0.15);
+			
+			if(HunterPrey.currentLevel==LevelList.getTotalLevels()) {
+				StdDraw.setPenColor(0,0,255);
+				StdDraw.filledRectangle(0.50, 0.10, 0.25, 0.05);
+				StdDraw.setPenColor(0,50,220);
+				StdDraw.filledRectangle(0.50, 0.10, 0.24, 0.04);
+				StdDraw.setPenColor(StdDraw.WHITE);
+				Font font3 = new Font("Helvetica", Font.PLAIN, 20);
+				StdDraw.setFont(font3);
+				StdDraw.text(0.50, 0.10, "Congratulations on winning!");
+			}
 
 			button.draw();
 			button2.draw();

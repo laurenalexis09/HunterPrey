@@ -1,11 +1,8 @@
 package menus;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
-
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-
+import java.awt.Toolkit;
 import main.HunterPrey;
 import utilities.MathUtility;
 import utilities.StdDraw;
@@ -14,7 +11,17 @@ public class StartMenu {
 	Color color1 = new Color(126, 160, 255);
 
 	public StartMenu(){	
-		
+
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int screenHeight = screenSize.height;
+		int screenWidth = screenSize.width;
+		if(screenHeight < screenWidth) {
+			StdDraw.setCanvasSize((int)(screenHeight/1.5), (int)(screenHeight/1.5));
+		}
+		else
+			StdDraw.setCanvasSize((int)(screenWidth/1.5), (int)(screenWidth/1.5));
+		StdDraw.frame.setTitle("Survive!");
+
 		NewGameButton button = new NewGameButton();
 		button.setX(0.94);
 		button.setY(0.06);
@@ -435,5 +442,5 @@ public class StartMenu {
 	public static void main(String[] args) {
 		new StartMenu();
 	}
-	
+
 }

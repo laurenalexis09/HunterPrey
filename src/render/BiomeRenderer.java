@@ -15,15 +15,9 @@ public class BiomeRenderer {
 
 	//private CircleRenderer circles = new CircleRenderer();
 
-	int forestCounter = LevelList.getTotalLevels();
-
 	public void render(Biome biome) {
 		StdDraw.setPenColor(biome.biomeColor);
 		StdDraw.filledSquare(5, 5, 5);
-
-		if(biome instanceof ArcticBiome) {
-
-		}
 
 		if(biome instanceof ForestBiome) {
 
@@ -260,6 +254,7 @@ public class BiomeRenderer {
 				StdDraw.filledEllipse(0.10, 0.59, 0.02, 0.01);
 				StdDraw.filledEllipse(0.60, 0.41, 0.03, 0.02);
 				StdDraw.filledEllipse(0.3, 0.10, 0.12, 0.07);
+				StdDraw.setPenRadius();
 			}
 
 			if(HunterPrey.currentLevel == 4) {
@@ -301,7 +296,9 @@ public class BiomeRenderer {
 				StdDraw.filledEllipse(0.10, 0.59, 0.02, 0.01);
 				StdDraw.filledEllipse(0.60, 0.41, 0.03, 0.02);
 				StdDraw.filledEllipse(0.3, 0.10, 0.12, 0.07);
+				StdDraw.setPenRadius();
 			}
+			
 
 			if(HunterPrey.currentLevel == 5) {
 
@@ -350,6 +347,184 @@ public class BiomeRenderer {
 				StdDraw.filledEllipse(0.60, 0.51, 0.03, 0.02);
 				StdDraw.filledEllipse(0.3, 0.27, 0.12, 0.07);
 				StdDraw.filledEllipse(0.7, 0.04, 0.15, 0.09);
+				StdDraw.setPenRadius();
+			}
+		}
+
+		if(biome instanceof ArcticBiome) {
+			if(HunterPrey.currentLevel == 6) {
+				StdDraw.setPenColor(0,130,255);
+				StdDraw.filledSquare(0.5, 0.5, 1);
+				StdDraw.setPenColor(StdDraw.YELLOW);
+				StdDraw.filledCircle(0.40, 0.85, 0.1);
+				StdDraw.setPenColor(StdDraw.BOOK_BLUE);
+				StdDraw.filledRectangle(0.5, 0.6, 0.5, 0.1);
+				StdDraw.setPenColor(190,190,190);
+				StdDraw.filledRectangle(0.5, 0.7, 0.06, 0.125);
+				StdDraw.filledRectangle(0.4, 0.68, 0.06, 0.125);
+				StdDraw.filledRectangle(0.3, 0.62, 0.06, 0.125);
+				StdDraw.filledRectangle(0.2, 0.56, 0.06, 0.125);
+				StdDraw.filledRectangle(0.6, 0.66, 0.06, 0.125);
+				StdDraw.filledRectangle(0.7, 0.64, 0.06, 0.125);
+				StdDraw.filledRectangle(0.8, 0.56, 0.06, 0.125);
+				StdDraw.setPenColor(240,240,255);
+				StdDraw.filledRectangle(0.50, 0.40, 0.5, 0.20);
+				StdDraw.setPenColor(200,200,200);
+				StdDraw.filledRectangle(0.50, 0.20, 0.5, 0.05);
+				StdDraw.setPenColor(190,190,190);
+				for(double h = 0; h <= 1; h+=0.02) {
+					StdDraw.line(h, 0.15, h, 0.25);
+				}
+
+				
+				StdDraw.setPenColor(0,0, 240);
+				for(double t = 0.1; t < 0.25; t=t+0.04) {
+					StdDraw.arc(t, 0.07, 0.02, 180, 0);
+				}
+
+				for(double t = 0.02; t < 0.21; t=t+0.04) {
+					StdDraw.arc(t, 0.13, 0.02, 180, 0);
+				}
+				for(double t = 0.59; t < 0.70; t=t+0.04) {
+					StdDraw.arc(t, 0.08, 0.02, 180, 0);
+				}
+
+				for(double t = 0.85; t < 0.99; t=t+0.04) {
+					StdDraw.arc(t, 0.09, 0.02, 180, 0);
+				}
+			}
+
+			if(HunterPrey.currentLevel == 7) {
+				StdDraw.setPenColor(0,130,255);
+				StdDraw.filledSquare(0.5, 0.5, 1);
+				StdDraw.setPenColor(StdDraw.YELLOW);
+				StdDraw.filledCircle(0.40, 0.85, 0.1);
+				
+				StdDraw.setPenColor(StdDraw.WHITE);
+				StdDraw.filledCircle(0.66, 0.80, 0.07);
+				StdDraw.filledCircle(0.70, 0.83, 0.07);
+				StdDraw.filledCircle(0.63, 0.81, 0.07);
+				StdDraw.filledCircle(0.70, 0.88, 0.07);
+				StdDraw.filledCircle(0.68, 0.90, 0.07);
+				StdDraw.filledCircle(0.74, 0.81, 0.07);
+				
+				StdDraw.setPenColor(StdDraw.BOOK_BLUE);
+				StdDraw.filledRectangle(0.5, 0.6, 0.5, 0.1);
+				StdDraw.setPenColor(190,190,190);
+				StdDraw.filledRectangle(0.5, 0.7, 0.06, 0.125);
+				StdDraw.filledRectangle(0.4, 0.68, 0.06, 0.125);
+				StdDraw.filledRectangle(0.3, 0.62, 0.06, 0.125);
+				StdDraw.filledRectangle(0.2, 0.56, 0.06, 0.125);
+				StdDraw.filledRectangle(0.6, 0.66, 0.06, 0.125);
+				StdDraw.filledRectangle(0.7, 0.64, 0.06, 0.125);
+				StdDraw.filledRectangle(0.8, 0.56, 0.06, 0.125);
+				StdDraw.setPenColor(240,240,255);
+				StdDraw.filledRectangle(0.50, 0.40, 0.5, 0.20);
+				StdDraw.setPenColor(200,200,200);
+				StdDraw.filledRectangle(0.50, 0.20, 0.5, 0.05);
+				StdDraw.setPenColor(190,190,190);
+				for(double h = 0; h <= 1; h+=0.02) {
+					StdDraw.line(h, 0.15, h, 0.25);
+				}
+				StdDraw.setPenRadius(0.008);
+				StdDraw.line(0.4, 0.4, 0.5, 0.5);
+				StdDraw.line(0.45, 0.45, 0.1, 0.3);
+				StdDraw.line(0.35, 0.35, 0.05, 0.4);
+				
+				StdDraw.line(0.6, 0.40, 0.93, 0.33);
+				StdDraw.line(0.7, 0.32, 0.8, 0.43);
+				StdDraw.line(0.6, 0.36, 0.9, 0.48);
+				StdDraw.setPenRadius();
+
+				
+				StdDraw.setPenColor(0,0, 240);
+				for(double t = 0.1; t < 0.25; t=t+0.04) {
+					StdDraw.arc(t, 0.07, 0.02, 180, 0);
+				}
+
+				for(double t = 0.02; t < 0.21; t=t+0.04) {
+					StdDraw.arc(t, 0.13, 0.02, 180, 0);
+				}
+				for(double t = 0.59; t < 0.70; t=t+0.04) {
+					StdDraw.arc(t, 0.08, 0.02, 180, 0);
+				}
+
+				for(double t = 0.85; t < 0.99; t=t+0.04) {
+					StdDraw.arc(t, 0.09, 0.02, 180, 0);
+				}
+			}
+
+			if(HunterPrey.currentLevel == 8) {
+				StdDraw.setPenColor(0,130,255);
+				StdDraw.filledSquare(0.5, 0.5, 1);
+				StdDraw.setPenColor(StdDraw.YELLOW);
+				StdDraw.filledCircle(0.40, 0.85, 0.1);
+				
+				StdDraw.setPenColor(StdDraw.WHITE);
+				StdDraw.filledCircle(0.66, 0.80, 0.07);
+				StdDraw.filledCircle(0.70, 0.83, 0.07);
+				StdDraw.filledCircle(0.63, 0.81, 0.07);
+				StdDraw.filledCircle(0.70, 0.88, 0.07);
+				StdDraw.filledCircle(0.68, 0.90, 0.07);
+				StdDraw.filledCircle(0.74, 0.81, 0.07);
+				
+				StdDraw.setPenColor(StdDraw.BOOK_BLUE);
+				StdDraw.filledRectangle(0.5, 0.6, 0.5, 0.1);
+				StdDraw.setPenColor(190,190,190);
+				StdDraw.filledRectangle(0.5, 0.7, 0.06, 0.125);
+				StdDraw.filledRectangle(0.4, 0.68, 0.06, 0.125);
+				StdDraw.filledRectangle(0.3, 0.62, 0.06, 0.125);
+				StdDraw.filledRectangle(0.2, 0.56, 0.06, 0.125);
+				StdDraw.filledRectangle(0.6, 0.66, 0.06, 0.125);
+				StdDraw.filledRectangle(0.7, 0.64, 0.06, 0.125);
+				StdDraw.filledRectangle(0.8, 0.56, 0.06, 0.125);
+				StdDraw.setPenColor(240,240,255);
+				StdDraw.filledRectangle(0.50, 0.40, 0.5, 0.20);
+				StdDraw.setPenColor(200,200,200);
+				StdDraw.filledRectangle(0.50, 0.20, 0.5, 0.05);
+				StdDraw.setPenColor(190,190,190);
+				for(double h = 0; h <= 1; h+=0.02) {
+					StdDraw.line(h, 0.15, h, 0.25);
+				}
+				StdDraw.setPenRadius(0.008);
+				StdDraw.line(0.4, 0.4, 0.5, 0.5);
+				StdDraw.line(0.45, 0.45, 0.1, 0.3);
+				StdDraw.line(0.35, 0.35, 0.05, 0.4);
+				
+				StdDraw.line(0.6, 0.40, 0.93, 0.33);
+				StdDraw.line(0.7, 0.32, 0.8, 0.43);
+				StdDraw.line(0.6, 0.36, 0.9, 0.48);
+				StdDraw.setPenRadius();
+				
+				StdDraw.setPenColor(170,170,170);
+				StdDraw.filledEllipse(0.7, 0.395, 0.08, 0.04);
+				StdDraw.setPenColor(140,140,140);
+				StdDraw.filledEllipse(0.7, 0.390, 0.07, 0.03);
+				StdDraw.setPenColor(0,40,255);
+				StdDraw.filledEllipse(0.7, 0.380, 0.05, 0.02);
+				
+				StdDraw.setPenColor(170,170,170);
+				StdDraw.filledEllipse(0.25, 0.365, 0.07, 0.03);
+				StdDraw.setPenColor(140,140,140);
+				StdDraw.filledEllipse(0.25, 0.360, 0.06, 0.02);
+				StdDraw.setPenColor(0,40,255);
+				StdDraw.filledEllipse(0.25, 0.350, 0.03, 0.01);
+				
+				StdDraw.setPenColor(0,0, 240);
+				for(double t = 0.1; t < 0.25; t=t+0.04) {
+					StdDraw.arc(t, 0.07, 0.02, 180, 0);
+				}
+
+				for(double t = 0.02; t < 0.21; t=t+0.04) {
+					StdDraw.arc(t, 0.13, 0.02, 180, 0);
+				}
+				for(double t = 0.59; t < 0.70; t=t+0.04) {
+					StdDraw.arc(t, 0.08, 0.02, 180, 0);
+				}
+
+				for(double t = 0.85; t < 0.99; t=t+0.04) {
+					StdDraw.arc(t, 0.09, 0.02, 180, 0);
+				}
 			}
 		}
 
@@ -362,5 +537,4 @@ public class BiomeRenderer {
 		//		}
 
 	}
-
 }

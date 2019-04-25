@@ -67,11 +67,6 @@ public class LevelRenderer {
 				hunter.rendeWithPreyAlive(level.hunters[i]);
 			}
 		}
-		else {
-			for(int i = 0; i < level.hunters.length; i++){
-				hunter.renderWithNoPreyAlive(level.hunters[i]);
-			}
-		}
 	}
 
 }
