@@ -8,6 +8,7 @@ import entities.Portal;
 import entities.Prey;
 import entities.RandomHunter;
 import entities.TrackerHunter;
+import powerups.ConfusionPowerup;
 import powerups.HealthPowerup;
 import powerups.InvincibilityPowerup;
 import powerups.Powerup;
@@ -87,10 +88,13 @@ public class Level {
 	}
 
 	private void spawnRandomPowerup() {
-		if(Math.random()<.5)
+		double rand = Math.random();
+		if(rand<.33)
 			powerups.add(new HealthPowerup(this,Math.random(),Math.random()));
-		else
+		else if(rand<.66)
 			powerups.add(new InvincibilityPowerup(this,Math.random(),Math.random()));
+		else
+			powerups.add(new ConfusionPowerup(this,Math.random(),Math.random()));
 	}
 
 	private void spawnHunters(double speed) {

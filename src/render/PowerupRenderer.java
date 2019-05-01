@@ -1,5 +1,6 @@
 package render;
 
+import powerups.ConfusionPowerup;
 import powerups.HealthPowerup;
 import powerups.InvincibilityPowerup;
 import powerups.Powerup;
@@ -28,6 +29,10 @@ public class PowerupRenderer {
 			StdDraw.setPenColor(150,0,0);
 			StdDraw.filledRectangle(power.x, power.y, 0.003, 0.007);
 			StdDraw.filledRectangle(power.x, power.y, 0.007, 0.003);
+		}
+		else if(power instanceof ConfusionPowerup) {
+			StdDraw.setPenColor(StdDraw.BOOK_BLUE);
+			StdDraw.filledCircle(power.x, power.y, 0.02);
 		}
 	}
 }

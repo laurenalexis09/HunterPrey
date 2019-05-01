@@ -96,6 +96,13 @@ public abstract class EntityLiving extends Entity{
 		this.currentHurt = hurtCooldown;
 		System.out.println("Remaining Health: " + health);
 	}
+	
+	public boolean hasConfusionActive() {
+		if(activePowerups.containsKey("confusion")) {
+			return true;
+		}
+		return false;
+	}
 
 	public boolean canPickUpPowerup() {
 		return true;

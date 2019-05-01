@@ -4,14 +4,14 @@ import level.Level;
 import utilities.MathUtility;
 
 public class RandomHunter extends Hunter{
-	
+
 	double targetX,targetY;
 
 	public RandomHunter(Level levelIn, double x, double y) {
 		super(levelIn, x, y);
 		generateNewTargetCoords();
 	}
-	
+
 	public void update(){
 		super.update();
 		if(MathUtility.getDistance(targetX, targetY, this.x, this.y)<.01) {
@@ -19,17 +19,32 @@ public class RandomHunter extends Hunter{
 		}
 		double time = 0.04;
 		double angle = Math.atan2(targetY-y, targetX-x);
-		x += speed*time*Math.cos(angle);
-		y += speed*time*Math.sin(angle);
+		Prey closest = level.getClosestPreyToLocation(x, y);
+		if(closest.hasConfusionActive()) {
+			x += speed*time*Math.cos(angle)*-1;
+			y += speed*time*Math.sin(angle)*-1;
+		}
+		else {
+			x += speed*time*Math.cos(angle);
+			y += speed*time*Math.sin(angle);
+		}
+		if ( x + getRadius() > 1)
+			x = 1 - getRadius();
+		if (x - getRadius () < 0)
+			x=0+ getRadius();
+		if (y + getRadius()> 1)
+			y = 1 - getRadius();
+		if (y - getRadius()< 0)
+			y = 0 + getRadius();
 	}
-	
+
 	public void generateNewTargetCoords() {
 		Prey closest = level.getClosestPreyToLocation(this.x, this.y);
 		do {
-		targetX = closest.x+Math.random()/4f-1/8f;
-		targetY = closest.y+Math.random()/4f-1/8f;
-		if(targetX<0 || targetY<0 || targetX>1 || targetY>1)
-		System.out.println(targetX + " " + targetY);
+			targetX = closest.x+Math.random()/4f-1/8f;
+			targetY = closest.y+Math.random()/4f-1/8f;
+			if(targetX<0 || targetY<0 || targetX>1 || targetY>1)
+				System.out.println(targetX + " " + targetY);
 		}while(targetX<0 || targetY<0 || targetX>1 || targetY>1);
 	}
 

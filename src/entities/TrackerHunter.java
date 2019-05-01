@@ -14,9 +14,14 @@ public class TrackerHunter extends Hunter{
 		Prey closest = level.getClosestPreyToLocation(this.x, this.y);
 		if( closest != null){
 			double angle = Math.atan2(closest.y-y, closest.x-x);
-			x += speed*time*Math.cos(angle);
-			y += speed*time*Math.sin(angle);
-
+			if(closest.hasConfusionActive()) {
+				x += speed*time*Math.cos(angle)*-1;
+				y += speed*time*Math.sin(angle)*-1;
+			}
+			else {
+				x += speed*time*Math.cos(angle);
+				y += speed*time*Math.sin(angle);
+			}
 			if ( x + getRadius() > 1)
 				x = 1 - getRadius();
 			if (x - getRadius () < 0)
