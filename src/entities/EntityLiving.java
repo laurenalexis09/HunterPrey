@@ -49,7 +49,6 @@ public abstract class EntityLiving extends Entity{
 			@SuppressWarnings("rawtypes")
 			Map.Entry pair = (Map.Entry)temp.next();
 			activePowerups.get(pair.getKey()).update();
-			//System.out.println("Updated " + pair.getKey() + " " + activePowerups.get(pair.getKey()).timeLimit);
 			if(activePowerups.get(pair.getKey()).expired)
 				activePowerups.remove(pair.getKey());
 		}
@@ -94,7 +93,6 @@ public abstract class EntityLiving extends Entity{
 		this.health-=damage;
 		this.isHurt = true;
 		this.currentHurt = hurtCooldown;
-		System.out.println("Remaining Health: " + health);
 	}
 	
 	public boolean hasConfusionActive() {

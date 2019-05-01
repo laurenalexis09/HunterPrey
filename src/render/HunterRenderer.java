@@ -9,6 +9,7 @@ import biome.MarsBiome;
 import biome.RandomBiome;
 import entities.Hunter;
 import entities.RandomHunter;
+import entities.RandomRadiusHunter;
 import entities.TrackerHunter;
 import utilities.StdDraw;
 
@@ -129,7 +130,7 @@ public class HunterRenderer {
 			}
 		}
 		
-		if(hunter instanceof RandomHunter) {
+		if(hunter instanceof RandomHunter || hunter instanceof RandomRadiusHunter) {
 			if (biome instanceof ArcticBiome) {
 				StdDraw.setPenColor(StdDraw.WHITE);
 				StdDraw.filledCircle(x-.01, y+0.01, (getRadius()/1.7));

@@ -7,6 +7,7 @@ import entities.Hunter;
 import entities.Portal;
 import entities.Prey;
 import entities.RandomHunter;
+import entities.RandomRadiusHunter;
 import entities.TrackerHunter;
 import powerups.ConfusionPowerup;
 import powerups.HealthPowerup;
@@ -59,7 +60,7 @@ public class Level {
 	}
 	
 	private void updateHunters() {
-		for(int i =0; i < hunters.length; i++){
+		for(int i = 0; i < hunters.length; i++){
 			hunters[i].update();
 		}
 	}
@@ -98,9 +99,20 @@ public class Level {
 	}
 
 	private void spawnHunters(double speed) {
-		hunters[0] = new TrackerHunter(this,Math.random(),Math.random()); 
-		for(int i = 1; i < hunters.length; i++)
-			hunters[i]= new RandomHunter(this,Math.random(),Math.random()); 
+		hunters[0] = new TrackerHunter(this,Math.random(),Math.random());
+		int median = hunters.length-1;
+		if(median%2==0) {
+			for(int i = 0; i < median/2; i++)
+				hunters[i+1]= new RandomHunter(this,Math.random(),Math.random());
+			for(int i = 0; i < median/2; i++)
+				hunters[i+median/2+1]= new RandomRadiusHunter(this,Math.random(),Math.random());
+		}
+		else {
+			for(int i = 0; i < median/2; i++)
+				hunters[i+1]= new RandomHunter(this,Math.random(),Math.random());
+			for(int i = 0; i < median/2+1; i++)
+				hunters[i+median/2+1]= new RandomRadiusHunter(this,Math.random(),Math.random());
+		}
 	}
 
 	private void spawnPrey() {

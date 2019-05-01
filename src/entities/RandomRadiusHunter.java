@@ -3,11 +3,11 @@ package entities;
 import level.Level;
 import utilities.MathUtility;
 
-public class RandomHunter extends Hunter{
+public class RandomRadiusHunter extends Hunter{
 
 	double targetX,targetY;
 
-	public RandomHunter(Level levelIn, double x, double y) {
+	public RandomRadiusHunter(Level levelIn, double x, double y) {
 		super(levelIn, x, y);
 		generateNewTargetCoords();
 	}
@@ -39,8 +39,11 @@ public class RandomHunter extends Hunter{
 	}
 
 	public void generateNewTargetCoords() {
-		targetX = MathUtility.clamp(getRadius(), 1-getRadius(),Math.random());
-		targetY = MathUtility.clamp(getRadius(), 1-getRadius(),Math.random());
+		Prey closest = level.getClosestPreyToLocation(this.x, this.y);
+		do {
+			targetX = closest.x+Math.random()/4f-1/8f;
+			targetY = closest.y+Math.random()/4f-1/8f;
+		}while(targetX<0+getRadius() || targetY<0+getRadius()|| targetX>1-getRadius() || targetY>1-getRadius());
 	}
 
 }

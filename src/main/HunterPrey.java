@@ -60,7 +60,7 @@ public class HunterPrey {
 				}
 			}
 			else if(state==GameState.OVER)
-				return;
+				System.exit(0);
 		}
 	}
 
