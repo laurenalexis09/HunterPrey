@@ -25,7 +25,7 @@ public class StartMenu {
 		NewGameButton button = new NewGameButton();
 		button.setX(0.94);
 		button.setY(0.06);
-
+		button.setText("New Game");
 		button = new NewGameButton();
 
 
@@ -69,12 +69,13 @@ public class StartMenu {
 				double distance = button.getRadius();
 				double dis = MathUtility.getDistance(StdDraw.mouseX(), StdDraw.mouseY(), button.x, button.y);
 				if(dis <= distance ) {
+					StdDraw.clear();
 					break;
 				}
 			}
 
 		}while(true);
-		new HunterPrey().run();
+		new RulesMenu().draw();
 	}
 
 

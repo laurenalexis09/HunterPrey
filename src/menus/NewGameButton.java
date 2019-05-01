@@ -10,6 +10,7 @@ public class NewGameButton {
 	public double y = 0.06;
 	public double radius = 0.05;
 	public int fontSize = 9;
+	public String text = "New Game";
 
 	public NewGameButton() {
 	}
@@ -41,6 +42,16 @@ public class NewGameButton {
 		 this.fontSize = fontSize;
 	 }
 	 
+	 
+	 public String getText() {
+		return text;
+		 
+	 }
+	 
+	 public void setText(String text) {
+		 this.text = text;
+	 }
+	 
 
 	public void draw() {
 
@@ -56,7 +67,7 @@ public class NewGameButton {
 		StdDraw.filledCircle(x, y, radius);
 		StdDraw.setPenColor(StdDraw.WHITE);
 		StdDraw.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, fontSize));
-		StdDraw.text(x, y, "New Game");
+		StdDraw.text(x, y, text);
 
 	}
 	
@@ -75,6 +86,8 @@ public class NewGameButton {
 	public void setY(double y) {
 		this.y = y;
 	}
+	
+	
 
 
 }

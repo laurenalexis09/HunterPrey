@@ -1,5 +1,7 @@
 package render;
 
+import java.awt.Font;
+
 import entities.Prey;
 import utilities.StdDraw;
 
@@ -8,7 +10,7 @@ public class HealthBarRenderer {
 	public void Render(Prey prey) {
 		double health = prey.health;
 		double maxHealth = prey.maxHealth;
-		
+		StdDraw.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, 9));
 		StdDraw.setPenColor(255, 0, 0);
 		StdDraw.filledRectangle(0, 0, 1f/4, 0.025);
 		StdDraw.setPenColor(0, 255, 0);
