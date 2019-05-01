@@ -3,6 +3,8 @@ package main;
 import level.Level;
 import level.LevelList;
 import menus.GameOverMenu;
+import menus.Menu;
+import menus.StartMenu;
 import render.LevelRenderer;
 
 public class HunterPrey {
@@ -13,10 +15,10 @@ public class HunterPrey {
 	public static HunterPrey hunterprey;//currently unused but acts as game instance singleton
 
 	//boolean gamePaused = false;
-	GameState state = GameState.RUNNING;
+	GameState state = GameState.INMENU;
 
 	public static int currentLevel = 0;
-
+	Menu currentMenu = new StartMenu(this);
 
 	public HunterPrey(){
 		hunterprey = this;
@@ -25,28 +27,43 @@ public class HunterPrey {
 	}
 
 	public void run() {
-		while(state==GameState.RUNNING) {
-			runGameLoop();
-			if(shouldGameEnd()) {
-				endGame();
-			}
-			if(level.levelCompleted) {
-				currentLevel++;
-				if(currentLevel==LevelList.getTotalLevels()) {
+		while(true) {
+			if(state==GameState.RUNNING) {
+				runGameLoop();
+				if(shouldGameEnd()) {
 					endGame();
 				}
-				level = new Level(LevelList.levels[currentLevel]);
-				renderer.setLevel(level);
+				if(level.levelCompleted) {
+					currentLevel++;
+					if(currentLevel==LevelList.getTotalLevels()) {
+						endGame();
+					}
+					else{
+						level = new Level(LevelList.levels[currentLevel]);
+						renderer.setLevel(level);
+					}
+				}
+				try {
+					Thread.sleep((long) (1000/30f));
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			try {
-				Thread.sleep((long) (1000/30f));
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			else if(state==GameState.INMENU) {
+				currentMenu.draw();
+				try {
+					Thread.sleep((long) (1000/30f));
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			else if(state==GameState.OVER)
+				return;
 		}
 	}
-	
+
 	public void resetGame() {
 		currentLevel = 0;
 		level = new Level(LevelList.levels[currentLevel]);
@@ -69,12 +86,24 @@ public class HunterPrey {
 	}
 
 	public void endGame() {
-		new GameOverMenu(this);
-		state = GameState.OVER;
+		currentMenu = new GameOverMenu(this);
+		state = GameState.INMENU;
 	}
 	
+	public void quitGame() {
+		state = GameState.OVER;
+	}
+
+	public void changeMenu(Menu newMenu) {
+		currentMenu = newMenu;
+	}
+
 	public enum GameState{
-		RUNNING,PAUSED,OVER,QUIT
+		RUNNING,INMENU,OVER
+	}
+	
+	public static void main(String[] args) {
+		new HunterPrey().run();
 	}
 
 }

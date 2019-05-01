@@ -6,7 +6,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import level.Level;
 import utilities.StdDraw;
 
-public class LevelRenderer {
+public class LevelRenderer{
 
 	Level level;
 

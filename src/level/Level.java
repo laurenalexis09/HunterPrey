@@ -52,7 +52,6 @@ public class Level {
 		}
 		levelTicks++;
 		if(levelTicks==portalSpawnTicks) {
-			System.out.println("Spawned");
 			portalSpawned=true;
 			spawnPortal();
 		}

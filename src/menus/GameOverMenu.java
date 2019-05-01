@@ -3,90 +3,89 @@ package menus;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-
 import level.LevelList;
 import menus.NewGameButton;
 import main.HunterPrey;
-import main.HunterPrey.GameState;
 import utilities.MathUtility;
 import utilities.StdDraw;
 
-public class GameOverMenu {
+public class GameOverMenu implements Menu{
 	
 	public static int instanceCode = 0;
 	
-	public GameOverMenu(HunterPrey game) {
-		
-		NewGameButton button = new NewGameButton();
+	HunterPrey game;
+	
+	NewGameButton button;
+	EndGameButton button2;
+	
+	public GameOverMenu(HunterPrey Game) {
+		this.game = Game;
+		button = new NewGameButton();
 		button.setX(0.25);
 		button.setY(0.25);
 		button.setRadius(0.07);
 		button.setFontSize(12);
-		EndGameButton button2 = new EndGameButton();
+		button2 = new EndGameButton();
 		button2.setX(0.75);
 		button2.setY(0.25);
+	}
+	
+	public void draw() {
+		button.update();
+		button2.update();
+
+		StdDraw.enableDoubleBuffering();
+
+		DrawBackground();
+
+		Font font1 = new Font("Helvetica", Font.BOLD, 60);
+		StdDraw.setFont(font1);
+		StdDraw.setPenColor(StdDraw.WHITE);
+		StdDraw.text(0.5, 0.80, "Game Over!");
+		StdDraw.setPenColor(128,166,206);
+		StdDraw.text(0.502, 0.8002, "Game Over!");
+		StdDraw.setPenColor(StdDraw.WHITE);
+		Font font2 = new Font("Helvetica", Font.ITALIC, 30);
+		StdDraw.setFont(font2);
+		StdDraw.text(0.5, 0.73, "Thanks for playing");
+		StdDraw.setPenColor(128,166,206);
+		StdDraw.text(0.502, 0.7302, "Thanks for playing");
+
+		DrawBigBear(0.50, 0.50, 0.15);
 		
-		do {
-
-			button.update();
-			button2.update();
-
-			StdDraw.enableDoubleBuffering();
-
-			DrawBackground();
-
-			Font font1 = new Font("Helvetica", Font.BOLD, 60);
-			StdDraw.setFont(font1);
+		if(HunterPrey.currentLevel==LevelList.getTotalLevels()) {
+			StdDraw.setPenColor(0,0,255);
+			StdDraw.filledRectangle(0.50, 0.10, 0.25, 0.05);
+			StdDraw.setPenColor(0,50,220);
+			StdDraw.filledRectangle(0.50, 0.10, 0.24, 0.04);
 			StdDraw.setPenColor(StdDraw.WHITE);
-			StdDraw.text(0.5, 0.80, "Game Over!");
-			StdDraw.setPenColor(128,166,206);
-			StdDraw.text(0.502, 0.8002, "Game Over!");
-			StdDraw.setPenColor(StdDraw.WHITE);
-			Font font2 = new Font("Helvetica", Font.ITALIC, 30);
-			StdDraw.setFont(font2);
-			StdDraw.text(0.5, 0.73, "Thanks for playing");
-			StdDraw.setPenColor(128,166,206);
-			StdDraw.text(0.502, 0.7302, "Thanks for playing");
+			Font font3 = new Font("Helvetica", Font.PLAIN, 20);
+			StdDraw.setFont(font3);
+			StdDraw.text(0.50, 0.10, "Congratulations on winning!");
+		}
 
-			DrawBigBear(0.50, 0.50, 0.15);
-			
-			if(HunterPrey.currentLevel==LevelList.getTotalLevels()) {
-				StdDraw.setPenColor(0,0,255);
-				StdDraw.filledRectangle(0.50, 0.10, 0.25, 0.05);
-				StdDraw.setPenColor(0,50,220);
-				StdDraw.filledRectangle(0.50, 0.10, 0.24, 0.04);
-				StdDraw.setPenColor(StdDraw.WHITE);
-				Font font3 = new Font("Helvetica", Font.PLAIN, 20);
-				StdDraw.setFont(font3);
-				StdDraw.text(0.50, 0.10, "Congratulations on winning!");
+		button.draw();
+		button2.draw();
+
+
+		StdDraw.show();
+
+
+		StdDraw.clear();
+
+		if(StdDraw.isMousePressed()) {
+			double distance = button.getRadius();
+			double dis = MathUtility.getDistance(StdDraw.mouseX(), StdDraw.mouseY(), button.x, button.y);
+			double dis2 = MathUtility.getDistance(StdDraw.mouseX(), StdDraw.mouseY(), button2.x, button2.y);
+			if(dis <= distance ) {
+				game.resetGame();
 			}
-
-			button.draw();
-			button2.draw();
-
-
-			StdDraw.show();
-
-
-			StdDraw.clear();
-
-			if(StdDraw.isMousePressed()) {
-				double distance = button.getRadius();
-				double dis = MathUtility.getDistance(StdDraw.mouseX(), StdDraw.mouseY(), button.x, button.y);
-				double dis2 = MathUtility.getDistance(StdDraw.mouseX(), StdDraw.mouseY(), button2.x, button2.y);
-				if(dis <= distance ) {
-					break;
-				}
-				if(dis2 <= distance) {
-					StdDraw.frame.dispose();
-					return;
-				}
+			if(dis2 <= distance) {
+				StdDraw.frame.dispose();
+				game.quitGame();
 			}
+		}
 
-		}while(true);
-		game.resetGame();
 	}
 
 	public static void DrawBigBear(double x, double y, double radius) {

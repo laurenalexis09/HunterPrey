@@ -7,11 +7,14 @@ import main.HunterPrey;
 import utilities.MathUtility;
 import utilities.StdDraw;
 
-public class StartMenu {
+public class StartMenu implements Menu{
 	Color color1 = new Color(126, 160, 255);
+	
+	NewGameButton button;
+	HunterPrey game;
 
-	public StartMenu(){	
-
+	public StartMenu(HunterPrey Game){	
+		this.game = Game;
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
@@ -22,60 +25,56 @@ public class StartMenu {
 			StdDraw.setCanvasSize((int)(screenWidth/1.5), (int)(screenWidth/1.5));
 		StdDraw.frame.setTitle("Survive!");
 
-		NewGameButton button = new NewGameButton();
+		button = new NewGameButton();
 		button.setX(0.94);
 		button.setY(0.06);
 		button.setText("New Game");
-		button = new NewGameButton();
+	}
+	
+	public void draw() {
+		button.update();
+		StdDraw.enableDoubleBuffering();
+		DrawBackground();
 
+		Font font1 = new Font("Helvetica", Font.BOLD, 60);
+		StdDraw.setFont(font1);
+		StdDraw.setPenColor(StdDraw.WHITE);
+		StdDraw.text(0.5, 0.75, "Survive!");
+		StdDraw.setPenColor(128,166,206);
+		StdDraw.text(0.502, 0.7502, "Survive!");
+		StdDraw.setPenColor(StdDraw.WHITE);
+		Font font2 = new Font("Helvetica", Font.ITALIC, 40);
+		StdDraw.setFont(font2);
+		StdDraw.text(0.5, 0.65, "A hunter prey game");
+		StdDraw.setPenColor(128,166,206);
+		StdDraw.text(0.502, 0.6502, "A hunter prey game");
 
-		do {
-			button.update();
-			StdDraw.enableDoubleBuffering();
-			DrawBackground();
+		MartianBear(0.89, 0.47, .02);
+		MartianPrey(0.77, 0.31, .01);
 
-			Font font1 = new Font("Helvetica", Font.BOLD, 60);
-			StdDraw.setFont(font1);
-			StdDraw.setPenColor(StdDraw.WHITE);
-			StdDraw.text(0.5, 0.75, "Survive!");
-			StdDraw.setPenColor(128,166,206);
-			StdDraw.text(0.502, 0.7502, "Survive!");
-			StdDraw.setPenColor(StdDraw.WHITE);
-			Font font2 = new Font("Helvetica", Font.ITALIC, 40);
-			StdDraw.setFont(font2);
-			StdDraw.text(0.5, 0.65, "A hunter prey game");
-			StdDraw.setPenColor(128,166,206);
-			StdDraw.text(0.502, 0.6502, "A hunter prey game");
+		ForestBear(0.41, 0.50, .02);
+		ForestPrey(0.51, 0.24, .01);
 
-			MartianBear(0.89, 0.47, .02);
-			MartianPrey(0.77, 0.31, .01);
+		ArcticBear(0.21, 0.40, .02);
+		ArcticPrey(0.11, 0.45, .01);
 
-			ForestBear(0.41, 0.50, .02);
-			ForestPrey(0.51, 0.24, .01);
+		DrawBigBear(0.33, 0.16, 0.15);
+		DrawBigBun(1/1.5, 0.13, 0.12);
 
-			ArcticBear(0.21, 0.40, .02);
-			ArcticPrey(0.11, 0.45, .01);
+		button.draw();
 
-			DrawBigBear(0.33, 0.16, 0.15);
-			DrawBigBun(1/1.5, 0.13, 0.12);
+		StdDraw.show();
 
-			button.draw();
+		StdDraw.clear();
 
-			StdDraw.show();
-
-			StdDraw.clear();
-
-			if(StdDraw.isMousePressed()) {
-				double distance = button.getRadius();
-				double dis = MathUtility.getDistance(StdDraw.mouseX(), StdDraw.mouseY(), button.x, button.y);
-				if(dis <= distance ) {
-					StdDraw.clear();
-					break;
-				}
+		if(StdDraw.isMousePressed()) {
+			double distance = button.getRadius();
+			double dis = MathUtility.getDistance(StdDraw.mouseX(), StdDraw.mouseY(), button.x, button.y);
+			if(dis <= distance ) {
+				StdDraw.clear();
+				game.changeMenu(new RulesMenu(game));
 			}
-
-		}while(true);
-		new RulesMenu().draw();
+		}
 	}
 
 
@@ -438,11 +437,6 @@ public class StartMenu {
 		StdDraw.filledCircle(x-.005, y, radius/5); //black part of right eye
 		StdDraw.filledCircle(x, y - 0.002, radius/6); //nose
 		StdDraw.line(x-0.004, y-0.0055, x+0.004, y-0.0055);	//mouth
-	}
-
-	public static void main(String[] args) {
-		new StartMenu();
-		System.out.println("Reached end");
 	}
 
 }
