@@ -6,7 +6,6 @@ import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-import entities.EndGameButton;
 import level.LevelList;
 import menus.NewGameButton;
 import main.HunterPrey;

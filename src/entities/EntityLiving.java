@@ -39,6 +39,10 @@ public abstract class EntityLiving extends Entity{
 		manageHealth();
 		if(isHurt)
 			updateHurt();
+		checkForExpiredPowerups();
+	}
+	
+	private void checkForExpiredPowerups() {
 		Iterator temp = activePowerups.entrySet().iterator();
 		while (temp.hasNext()) {
 			Map.Entry pair = (Map.Entry)temp.next();

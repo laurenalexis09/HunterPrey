@@ -2,7 +2,7 @@ package powerups;
 
 public class PowerupEffect {
 	
-	int cooldown = 60;
+	int cooldown = 90;
 	public int timeLimit = 0;
 	
 	public boolean expired = false;
