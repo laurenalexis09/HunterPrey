@@ -9,6 +9,8 @@ import level.Level;
 public abstract class Powerup extends Entity{
 	
 	public Color color;
+	public String name;
+	public PowerupEffect effect;
 
 	public Powerup(Level levelIn) {
 		super(levelIn);

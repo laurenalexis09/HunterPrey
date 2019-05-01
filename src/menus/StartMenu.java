@@ -441,6 +441,7 @@ public class StartMenu {
 
 	public static void main(String[] args) {
 		new StartMenu();
+		System.out.println("Reached end");
 	}
 
 }

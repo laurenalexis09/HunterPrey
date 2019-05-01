@@ -13,6 +13,7 @@ public class HealthPowerup extends Powerup{
 		super(levelIn);
 		this.setPosition(x, y);
 		this.setColor(new Color(255,0,0));
+		this.name = "health";
 	}
 	
 	public void applyPowerupToEntity(EntityLiving entity){

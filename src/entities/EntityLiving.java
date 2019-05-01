@@ -1,8 +1,8 @@
 package entities;
 
 import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Iterator;
+import java.util.Map;
 
 import level.Level;
 import powerups.Powerup;
@@ -12,7 +12,7 @@ import utilities.MathUtility;
 public abstract class EntityLiving extends Entity{
 
 	boolean isHurt = false;
-	boolean canBeDamaged=true;
+	boolean canBeDamaged = true;
 	int hurtCooldown = 5;
 	int currentHurt = 0;
 
@@ -23,7 +23,7 @@ public abstract class EntityLiving extends Entity{
 
 	public double attackDamage = 10;
 
-	HashMap<Powerup,PowerupEffect> activePowerups = new HashMap<>();
+	HashMap<String,PowerupEffect> activePowerups = new HashMap<>();
 
 	public EntityLiving(Level levelIn) {
 		super(levelIn);
@@ -39,6 +39,14 @@ public abstract class EntityLiving extends Entity{
 		manageHealth();
 		if(isHurt)
 			updateHurt();
+		Iterator temp = activePowerups.entrySet().iterator();
+		while (temp.hasNext()) {
+			Map.Entry pair = (Map.Entry)temp.next();
+			activePowerups.get(pair.getKey()).update();
+			//System.out.println("Updated " + pair.getKey() + " " + activePowerups.get(pair.getKey()).timeLimit);
+			if(activePowerups.get(pair.getKey()).expired)
+				activePowerups.remove(pair.getKey());
+		}
 	}
 
 	private void manageHealth() {
@@ -49,8 +57,11 @@ public abstract class EntityLiving extends Entity{
 	private void pickUpNearbyPowerups() {
 		for(int i=0;i<level.powerups.size();i++) {
 			Powerup power = level.powerups.get(i);
-			if(MathUtility.getDistance(x,y,power.x,power.y)<.05)
+			if(MathUtility.getDistance(x,y,power.x,power.y)<.05) {
+				if(!power.isPowerupInstant())
+					activePowerups.put(power.name,power.effect);
 				power.applyPowerupToEntity(this);
+			}
 		}
 	}
 
@@ -65,7 +76,7 @@ public abstract class EntityLiving extends Entity{
 	}
 
 	public void attemptDamageFromSource(EntityLiving source) {
-		if(!canBeDamaged || isHurt) {
+		if(!canBeDamaged || isHurt || activePowerups.containsKey("invincibility")) {
 			return;
 		}
 		else {
@@ -83,23 +94,5 @@ public abstract class EntityLiving extends Entity{
 	public boolean canPickUpPowerup() {
 		return true;
 	}
-	
-	public void invincible () {
-		canBeDamaged=false;
-		Timer time= new Timer();
-		time.schedule(new TimerTask() {
-
-			
-			public void run() {
-			
-				canBeDamaged=true;
-			}
-			
-		}, 5000);
-	}
 
 }
-
-
-
-

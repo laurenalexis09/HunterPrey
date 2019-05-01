@@ -11,12 +11,12 @@ public class InvincibilityPowerup extends Powerup {
 		super(levelIn);
 		this.setPosition(x, y);
 		this.setColor(new Color(0,0,255));
+		this.name = "invincibility";
+		this.effect = new PowerupEffectInvincibility();
 	}
 	
 	public void applyPowerupToEntity(EntityLiving entity) {
-		entity.invincible();
 		this.setDead();
-		
 	}
 	
 
