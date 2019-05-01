@@ -2,6 +2,7 @@ package render;
 
 import java.awt.Color;
 
+import powerups.HealthPowerup;
 import powerups.InvincibilityPowerup;
 import powerups.Powerup;
 import utilities.StdDraw;
@@ -9,17 +10,26 @@ import utilities.StdDraw;
 public class PowerupRenderer {
 
 	public void render(Powerup power) {
-		StdDraw.setPenColor(new Color(108, 47, 0));
-		StdDraw.filledSquare(power.x, power.y+0.05, 0.007);
-		StdDraw.setPenColor(StdDraw.WHITE);
-		StdDraw.filledRectangle(power.x, power.y+0.01, 0.005, 0.03);
-		StdDraw.filledRectangle(power.x, power.y+0.04, 0.01, 0.005);
-		StdDraw.setPenColor(power.color);
-		StdDraw.filledRectangle(power.x, power.y+0.005, 0.005, 0.02);
-		StdDraw.filledCircle(power.x, power.y, 0.02);
-		StdDraw.setPenColor();
-		StdDraw.line(power.x-0.02, power.y, power.x-0.003, power.y);
-		StdDraw.line(power.x-0.019, power.y+0.008, power.x-0.003, power.y+0.008);
-		StdDraw.line(power.x-0.019, power.y-0.008, power.x-0.003, power.y-0.008);
+		if(power instanceof InvincibilityPowerup) {
+			StdDraw.setPenColor(254,203,0);
+			StdDraw.filledCircle(power.x, power.y, 0.02);
+			StdDraw.setPenColor(0,0,255);
+			StdDraw.filledEllipse(power.x, power.y+0.0043, 0.009, 0.014);
+			StdDraw.setPenColor(254,203,0);
+			StdDraw.filledCircle(power.x-0.0035, power.y+0.0033, 0.003);
+			StdDraw.filledCircle(power.x+0.0035, power.y+0.0033, 0.003);
+			StdDraw.filledRectangle(power.x, power.y+0.01, 0.0098,0.006);
+			StdDraw.filledRectangle( power.x, power.y+0.017, 0.0055, 0.002);
+		}
+		else if(power instanceof HealthPowerup) {
+			StdDraw.setPenColor(StdDraw.BOOK_BLUE);
+			StdDraw.filledCircle(power.x, power.y, 0.02);
+			StdDraw.setPenColor(255,0,0);
+			StdDraw.filledRectangle(power.x, power.y, 0.005, 0.009);
+			StdDraw.filledRectangle(power.x, power.y, 0.009, 0.005);
+			StdDraw.setPenColor(150,0,0);
+			StdDraw.filledRectangle(power.x, power.y, 0.003, 0.007);
+			StdDraw.filledRectangle(power.x, power.y, 0.007, 0.003);
+		}
 	}
 }

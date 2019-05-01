@@ -10,6 +10,7 @@ import entities.EndGameButton;
 import level.LevelList;
 import menus.NewGameButton;
 import main.HunterPrey;
+import main.HunterPrey.GameState;
 import utilities.MathUtility;
 import utilities.StdDraw;
 
