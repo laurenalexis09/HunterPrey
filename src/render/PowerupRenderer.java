@@ -33,6 +33,11 @@ public class PowerupRenderer {
 		else if(power instanceof ConfusionPowerup) {
 			StdDraw.setPenColor(StdDraw.BOOK_BLUE);
 			StdDraw.filledCircle(power.x, power.y, 0.02);
+			StdDraw.setPenRadius(0.01);
+			StdDraw.setPenColor(StdDraw.YELLOW);
+			StdDraw.line(power.x-0.007, power.y, power.x+0.007, power.y);
+			StdDraw.line(power.x-0.007, power.y, power.x-0.003, power.y+0.006);
+			StdDraw.line(power.x-0.007, power.y, power.x-0.003, power.y-0.006);
 		}
 	}
 }

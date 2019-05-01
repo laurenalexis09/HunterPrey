@@ -34,20 +34,19 @@ public class RulesMenu implements Menu{
 
 		ForestBear(i, 0.95, 0.02);
 		ForestPrey(i+0.05,0.94, 0.01);
-		i+=0.0001;
+		i+=0.01;
 		if(i > 1.2) {
 			i = -0.1;
 		}
 
 		RandomArcticBear(0.96, j, 0.02);
 		ArcticPrey(0.96, j-0.05, 0.01);
-		j-=0.0001;
+		j-=0.01;
 		if(j<-0.3) {
 			j = 1.1;
 		}
 
-		//StdDraw.pause(40);
-		Font font1 = new Font("Helvetica", Font.BOLD, 60);
+		Font font1 = new Font("Helvetica", Font.BOLD, 50);
 		StdDraw.setFont(font1);
 		StdDraw.setPenColor(70,70,70);
 		StdDraw.text(0.5, 0.90, "Rules");
@@ -95,25 +94,27 @@ public class RulesMenu implements Menu{
 		StdDraw.textLeft(0, 0.42, "Powerups:");
 		HealthPowerup(0.03, 0.37);
 		InPowerup(0.08, 0.37);
+		conPowerup(0.13, 0.37);
 
 		StdDraw.setFont(font2);
 		StdDraw.setPenColor(StdDraw.WHITE);
 		StdDraw.textLeft(0, 0.32, "The health powerup restores lost health by 50 points."); 
 		StdDraw.textLeft(0, 0.29, "The shield powerup gives you invincibility for 5 seconds.");
+		StdDraw.textLeft(0, 0.26, "The confusion powerup hurdles the hunters away from you.");
 
 		StdDraw.setFont(font3);
-		StdDraw.textLeft(0, 0.24, "Portal:");
+		StdDraw.textLeft(0, 0.21, "Portal:");
 
 
 		StdDraw.setPenColor(0,0,0);
-		StdDraw.filledCircle(0.05, 0.17, 0.05);
+		StdDraw.filledCircle(0.05, 0.145, 0.05);
 		StdDraw.setPenColor(255,255,255);
-		StdDraw.circle(0.05, 0.17, 0.05);
+		StdDraw.circle(0.05, 0.145, 0.05);
 
 		StdDraw.setFont(font2);
 		StdDraw.setPenColor(StdDraw.WHITE);
-		StdDraw.textLeft(0, 0.10, "This is your end goal!"); 
-		StdDraw.textLeft(0, 0.07, "Enter the portal to go onto the next level.");
+		StdDraw.textLeft(0, 0.08, "This is your end goal!"); 
+		StdDraw.textLeft(0, 0.05, "Enter the portal to go onto the next level.");
 
 		Font font4 = new Font("Helvetica", Font.ITALIC, 15);
 		StdDraw.setFont(font4);
@@ -413,5 +414,16 @@ public class RulesMenu implements Menu{
 		StdDraw.filledCircle(x+0.0035, y+0.0033, 0.003);
 		StdDraw.filledRectangle(x, y+0.01, 0.0098,0.006);
 		StdDraw.filledRectangle( x, y+0.017, 0.0055, 0.002);
+	}
+	
+	public static void conPowerup(double x, double y) {
+		StdDraw.setPenColor(14,77,146);
+		StdDraw.filledCircle(x, y, 0.02);
+		StdDraw.setPenRadius(0.01);
+		StdDraw.setPenColor(StdDraw.YELLOW);
+		StdDraw.line(x-0.007, y, x+0.007, y);
+		StdDraw.line(x-0.007, y, x-0.003, y+0.006);
+		StdDraw.line(x-0.007, y, x-0.003, y-0.006);
+		StdDraw.setPenRadius();
 	}
 }
