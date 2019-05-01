@@ -1,7 +1,5 @@
 package render;
 
-import java.awt.Color;
-
 import powerups.HealthPowerup;
 import powerups.InvincibilityPowerup;
 import powerups.Powerup;

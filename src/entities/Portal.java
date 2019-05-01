@@ -3,8 +3,6 @@ package entities;
 import java.awt.Color;
 
 import level.Level;
-import level.LevelList;
-import main.HunterPrey;
 
 public class Portal extends Entity{
 	

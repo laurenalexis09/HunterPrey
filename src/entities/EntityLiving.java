@@ -43,8 +43,10 @@ public abstract class EntityLiving extends Entity{
 	}
 	
 	private void checkForExpiredPowerups() {
+		@SuppressWarnings("rawtypes")
 		Iterator temp = activePowerups.entrySet().iterator();
 		while (temp.hasNext()) {
+			@SuppressWarnings("rawtypes")
 			Map.Entry pair = (Map.Entry)temp.next();
 			activePowerups.get(pair.getKey()).update();
 			//System.out.println("Updated " + pair.getKey() + " " + activePowerups.get(pair.getKey()).timeLimit);

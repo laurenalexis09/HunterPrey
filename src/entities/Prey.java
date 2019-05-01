@@ -2,7 +2,6 @@ package entities;
 import java.awt.Color;
 
 import level.Level;
-import powerups.Powerup;
 import utilities.ColorUtilities;
 import utilities.MathUtility;
 import utilities.StdDraw;
@@ -26,7 +25,6 @@ public class Prey extends EntityLiving{
 
 	public void update(){
 		super.update();
-		double time = 0.04;
 		double mouseX = StdDraw.mouseX();
 		double mouseY = StdDraw.mouseY();
 		if( mouseX > 0 && mouseX < 1 && mouseY > 0 && mouseY < 1 )

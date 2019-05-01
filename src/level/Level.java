@@ -43,19 +43,31 @@ public class Level {
 	public void update() {
 		biome.update();
 		trySpawnPowerup();
+		updatePrey();
+		updateHunters();
+		checkIfPortalShouldSpawn();
+		cleanupDeadEntities();
+		levelTicks++;
+	}
+	
+	private void updatePrey() {
 		for(int i =0; i < prey.length; i++){
 			if(prey[i].isAlive())
 				prey[i].update();
 		}
+	}
+	
+	private void updateHunters() {
 		for(int i =0; i < hunters.length; i++){
 			hunters[i].update();
 		}
-		levelTicks++;
+	}
+	
+	private void checkIfPortalShouldSpawn() {
 		if(levelTicks==portalSpawnTicks) {
 			portalSpawned=true;
 			spawnPortal();
 		}
-		cleanupDeadEntities();
 	}
 
 	private void cleanupDeadEntities() {

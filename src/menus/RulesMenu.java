@@ -1,10 +1,8 @@
 package menus;
 
-import java.awt.Color;
 import java.awt.Font;
 
 import main.HunterPrey;
-import render.LevelRenderer;
 import utilities.MathUtility;
 import utilities.StdDraw;
 

@@ -8,12 +8,9 @@ import biome.ForestBiome;
 import biome.MarsBiome;
 import biome.RandomBiome;
 import utilities.StdDraw;
-import level.LevelList;
 import main.HunterPrey;
 
 public class BiomeRenderer {
-
-	//private CircleRenderer circles = new CircleRenderer();
 
 	public void render(Biome biome) {
 		StdDraw.setPenColor(biome.biomeColor);
