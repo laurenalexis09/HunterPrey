@@ -20,15 +20,12 @@ public abstract class EntityLiving extends Entity{
 	int randomSound;
 	public double health = 100;
 	public	double maxHealth = health;
-	String[] sounds = new String[7];
+	String[] sounds = new String[4];
 	{
-	sounds[0] = "/edu/etown/sounds/waha.wav";
-	sounds[1] = "/edu/etown/sounds/yahoo.wav";
-	sounds[2] = "/edu/etown/sounds/yippee.wav";
-	sounds[3] = "/edu/etown/sounds/oof.wav";
-	sounds[4] = "/edu/etown/sounds/doh.wav";
-	sounds[5] = "/edu/etown/sounds/ungh.wav";
-	sounds[6] = "/edu/etown/sounds/whoa.wav";
+	sounds[0] = "/edu/etown/sounds/powerup1.wav";
+	sounds[1] = "/edu/etown/sounds/powerup2.wav";
+	sounds[2] = "/edu/etown/sounds/hit1.wav";
+	sounds[3] = "/edu/etown/sounds/hit2.wav";
 	}
 
 	public double speed;
@@ -80,7 +77,7 @@ public abstract class EntityLiving extends Entity{
 				if(!power.isPowerupInstant())
 					activePowerups.put(power.name,power.effect);
 				power.applyPowerupToEntity(this);
-				randomSound = (int) Math.floor(Math.random() * 3); 
+				randomSound = (int) Math.floor(Math.random() * 2); 
 				soundProcessor.playSound(sounds[randomSound]);
 				System.out.println("entities: EntityLiving.java, picked up powerup " + power.name);
 			}
@@ -106,7 +103,7 @@ public abstract class EntityLiving extends Entity{
 		}
 		else {
 			damageFromSource(source.attackDamage);
-			randomSound = (int) Math.floor(Math.random() * 4) + 3;
+			randomSound = (int) Math.floor(Math.random() * 2) + 2;
 			soundProcessor.playSound(sounds[randomSound]);
 			
 		}
