@@ -137,6 +137,7 @@ public class Level {
 
 	public void spawnPortal() {
 		nextLevelPortal = new Portal(this,Math.random(),Math.random());
+		System.out.println("Portal Spawned");
 	}
 
 	public void completeLevel() {

@@ -19,14 +19,18 @@ public abstract class Biome {
 	
 	public static Biome getBiome(String input) {
 		if(input.equalsIgnoreCase("Forest")){
+			System.out.println("Forest Biome Spawned");
 			return new ForestBiome();
+			
 		}
 
 		if(input.equalsIgnoreCase("Arctic")){
+			System.out.println("Arctic Biome Spawned");
 			return new ArcticBiome();
 		}
 		
 		if(input.equalsIgnoreCase("Mars")){
+			System.out.println("Mars Biome Spawned");
 			return new MarsBiome();
 		}
 
