@@ -16,7 +16,8 @@ public class StartMenu implements Menu{
 	HunterPrey game;
 
 	public StartMenu(HunterPrey Game){
-		SoundProcessor.playMusic("./src/bgm1.wav");
+		SoundProcessor soundProcessor = new SoundProcessor();
+		soundProcessor.playMusic("/edu/etown/sounds/bgm1.wav");
 		this.game = Game;
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int screenHeight = screenSize.height;

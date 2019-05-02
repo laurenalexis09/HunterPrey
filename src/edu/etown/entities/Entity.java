@@ -8,6 +8,7 @@ public abstract class Entity{
 	public double x;
 	public double y;
 	public Level level;
+	SoundProcessor soundProcessor = new SoundProcessor();
 	
 	public boolean alive = true;
 	
@@ -21,7 +22,7 @@ public abstract class Entity{
 	}
 	
 	public void setDead() {
-		SoundProcessor.playSound("./src/death.wav");
+		//soundProcessor.playSound("/edu/etown/sounds/mamma-mia.wav");
 		alive = false;
 	}
 	
