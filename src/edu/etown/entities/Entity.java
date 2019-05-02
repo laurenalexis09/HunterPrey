@@ -2,6 +2,8 @@ package edu.etown.entities;
 
 import edu.etown.level.Level;
 
+import edu.etown.sounds.SoundProcessor;
+
 public abstract class Entity{
 	public double x;
 	public double y;
@@ -19,6 +21,7 @@ public abstract class Entity{
 	}
 	
 	public void setDead() {
+		SoundProcessor.playSound("./src/death.wav");
 		alive = false;
 	}
 	
