@@ -1,11 +1,13 @@
 package edu.etown.menus;
 
 import java.awt.Color;
+
 import java.awt.Font;
 
 import edu.etown.level.LevelList;
 import edu.etown.main.HunterPrey;
 import edu.etown.menus.NewGameButton;
+import edu.etown.sounds.SoundProcessor;
 import edu.etown.utilities.MathUtility;
 import edu.etown.utilities.StdDraw;
 
@@ -28,6 +30,7 @@ public class GameOverMenu implements Menu{
 		button2 = new EndGameButton();
 		button2.setX(0.75);
 		button2.setY(0.25);
+		SoundProcessor.playSound("./src/gameCompletion.wav");
 	}
 	
 	public void draw() {
