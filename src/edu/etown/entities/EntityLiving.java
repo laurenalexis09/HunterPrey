@@ -1,9 +1,8 @@
 package edu.etown.entities;
 
-import java.util.HashMap;
-
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import edu.etown.level.Level;
 import edu.etown.powerups.Powerup;
@@ -25,7 +24,7 @@ public abstract class EntityLiving extends Entity{
 
 	public double attackDamage = 10;
 
-	HashMap<String,PowerupEffect> activePowerups = new HashMap<>();
+	ConcurrentHashMap<String,PowerupEffect> activePowerups = new ConcurrentHashMap<>();
 
 	public EntityLiving(Level levelIn) {
 		super(levelIn);
