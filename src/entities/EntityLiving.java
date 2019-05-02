@@ -66,6 +66,7 @@ public abstract class EntityLiving extends Entity{
 				if(!power.isPowerupInstant())
 					activePowerups.put(power.name,power.effect);
 				power.applyPowerupToEntity(this);
+				System.out.println("entities: EntityLiving.java, picked up powerup " + power.name);
 			}
 		}
 	}
@@ -82,6 +83,7 @@ public abstract class EntityLiving extends Entity{
 
 	public void attemptDamageFromSource(EntityLiving source) {
 		if(!canBeDamaged || isHurt || activePowerups.containsKey("invincibility")) {
+			System.out.println("entities: EntityLiving.java, didn't take damage");
 			return;
 		}
 		else {
