@@ -12,12 +12,12 @@ import edu.etown.utilities.MathUtility;
 import edu.etown.sounds.SoundProcessor;
 
 public abstract class EntityLiving extends Entity{
-
+	SoundProcessor soundProcessor = new SoundProcessor();
 	boolean isHurt = false;
 	boolean canBeDamaged = true;
 	int hurtCooldown = 5;
 	int currentHurt = 0;
-
+	int randomSound;
 	public double health = 100;
 	public	double maxHealth = health;
 
@@ -64,12 +64,18 @@ public abstract class EntityLiving extends Entity{
 	}
 
 	private void pickUpNearbyPowerups() {
+		String[] sounds = new String[4];
+		sounds[0] = "/edu/etown/sounds/waha.wav";
+		sounds[1] = "/edu/etown/sounds/yahoo.wav";
+		sounds[2] = "/edu/etown/sounds/yippee.wav";
 		for(int i=0;i<level.powerups.size();i++) {
 			Powerup power = level.powerups.get(i);
 			if(MathUtility.getDistance(x,y,power.x,power.y)<.05) {
 				if(!power.isPowerupInstant())
 					activePowerups.put(power.name,power.effect);
 				power.applyPowerupToEntity(this);
+				randomSound = (int) Math.floor(Math.random() * 3); 
+				soundProcessor.playSound(sounds[randomSound]);
 				System.out.println("entities: EntityLiving.java, picked up powerup " + power.name);
 			}
 		}
@@ -87,13 +93,21 @@ public abstract class EntityLiving extends Entity{
 	}
 
 	public void attemptDamageFromSource(EntityLiving source) {
+		String[] sounds = new String[4];
+		sounds[0] = "/edu/etown/sounds/oof.wav";
+		sounds[1] = "/edu/etown/sounds/doh.wav";
+		sounds[2] = "/edu/etown/sounds/ungh.wav";
+		sounds[3] = "/edu/etown/sounds/whoa.wav";
+		
 		if(!canBeDamaged || isHurt || activePowerups.containsKey("invincibility")) {
 			System.out.println("entities: EntityLiving.java, didnt take damage");
 			return;
 		}
 		else {
 			damageFromSource(source.attackDamage);
-			SoundProcessor.playSound("./src/oof.wav");
+			randomSound = (int) Math.floor(Math.random() * 4);
+			soundProcessor.playSound(sounds[randomSound]);
+			
 		}
 	}
 

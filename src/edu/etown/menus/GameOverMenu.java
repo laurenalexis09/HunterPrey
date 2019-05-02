@@ -21,6 +21,7 @@ public class GameOverMenu implements Menu{
 	EndGameButton button2;
 	
 	public GameOverMenu(HunterPrey Game) {
+		SoundProcessor soundProcessor = new SoundProcessor();
 		this.game = Game;
 		button = new NewGameButton();
 		button.setX(0.25);
@@ -30,7 +31,7 @@ public class GameOverMenu implements Menu{
 		button2 = new EndGameButton();
 		button2.setX(0.75);
 		button2.setY(0.25);
-		SoundProcessor.playSound("./src/gameCompletion.wav");
+		soundProcessor.playSound("/edu/etown/sounds/gameCompletion.wav");
 	}
 	
 	public void draw() {
