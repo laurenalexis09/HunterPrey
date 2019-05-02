@@ -41,7 +41,7 @@ public abstract class EntityLiving extends Entity{
 			updateHurt();
 		checkForExpiredPowerups();
 	}
-	
+
 	private void checkForExpiredPowerups() {
 		@SuppressWarnings("rawtypes")
 		Iterator temp = activePowerups.entrySet().iterator();
@@ -49,8 +49,10 @@ public abstract class EntityLiving extends Entity{
 			@SuppressWarnings("rawtypes")
 			Map.Entry pair = (Map.Entry)temp.next();
 			activePowerups.get(pair.getKey()).update();
-			if(activePowerups.get(pair.getKey()).expired)
+			if(activePowerups.get(pair.getKey()).expired) {
 				activePowerups.remove(pair.getKey());
+				System.out.println("Entities: EntityLiving.java, powerup is removed");
+			}
 		}
 	}
 
@@ -73,6 +75,7 @@ public abstract class EntityLiving extends Entity{
 
 	public void addHealth(double amount) {
 		this.health += amount;
+		System.out.print("Entities: EntityLiving.java, health added");
 	}
 
 	private void updateHurt() {
@@ -83,7 +86,7 @@ public abstract class EntityLiving extends Entity{
 
 	public void attemptDamageFromSource(EntityLiving source) {
 		if(!canBeDamaged || isHurt || activePowerups.containsKey("invincibility")) {
-			System.out.println("entities: EntityLiving.java, didn't take damage");
+			System.out.println("entities: EntityLiving.java, didnt take damage");
 			return;
 		}
 		else {
@@ -96,7 +99,7 @@ public abstract class EntityLiving extends Entity{
 		this.isHurt = true;
 		this.currentHurt = hurtCooldown;
 	}
-	
+
 	public boolean hasConfusionActive() {
 		if(activePowerups.containsKey("confusion")) {
 			return true;

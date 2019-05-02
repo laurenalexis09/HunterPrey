@@ -16,6 +16,7 @@ public class ConfusionPowerup extends Powerup{
 	@Override
 	public void applyPowerupToEntity(EntityLiving entity) {
 		this.setDead();
+		System.out.println("Entity: ConfusionPowerup.java, spawned");
 	}
 
 }

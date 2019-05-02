@@ -41,6 +41,7 @@ public class RandomHunter extends Hunter{
 	public void generateNewTargetCoords() {
 		targetX = MathUtility.clamp(getRadius(), 1-getRadius(),Math.random());
 		targetY = MathUtility.clamp(getRadius(), 1-getRadius(),Math.random());
+		System.out.println("Entity: RandomHunter.java, Coordinates obtained");
 	}
 
 }
