@@ -1,20 +1,11 @@
 package edu.etown.biome;
 import java.awt.Color;
 
-import edu.etown.shapes.Circle;
-
 public abstract class Biome {
 	public Color circleColor;
 	public Color biomeColor;
-	public Circle[] circles = new Circle[20];
 	Biome(Color circleColor){
 		this.circleColor = circleColor;
-		spawnCircles();
-	}
-	
-	public void spawnCircles() {
-		for(int i=0;i<circles.length;i++)
-			circles[i] = new Circle(Math.random(),Math.random(),circleColor);
 	}
 	
 	public static Biome getBiome(String input) {
