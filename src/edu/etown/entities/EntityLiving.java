@@ -20,6 +20,16 @@ public abstract class EntityLiving extends Entity{
 	int randomSound;
 	public double health = 100;
 	public	double maxHealth = health;
+	String[] sounds = new String[7];
+	{
+	sounds[0] = "/edu/etown/sounds/waha.wav";
+	sounds[1] = "/edu/etown/sounds/yahoo.wav";
+	sounds[2] = "/edu/etown/sounds/yippee.wav";
+	sounds[3] = "/edu/etown/sounds/oof.wav";
+	sounds[4] = "/edu/etown/sounds/doh.wav";
+	sounds[5] = "/edu/etown/sounds/ungh.wav";
+	sounds[6] = "/edu/etown/sounds/whoa.wav";
+	}
 
 	public double speed;
 
@@ -64,10 +74,6 @@ public abstract class EntityLiving extends Entity{
 	}
 
 	private void pickUpNearbyPowerups() {
-		String[] sounds = new String[4];
-		sounds[0] = "/edu/etown/sounds/waha.wav";
-		sounds[1] = "/edu/etown/sounds/yahoo.wav";
-		sounds[2] = "/edu/etown/sounds/yippee.wav";
 		for(int i=0;i<level.powerups.size();i++) {
 			Powerup power = level.powerups.get(i);
 			if(MathUtility.getDistance(x,y,power.x,power.y)<.05) {
@@ -93,11 +99,6 @@ public abstract class EntityLiving extends Entity{
 	}
 
 	public void attemptDamageFromSource(EntityLiving source) {
-		String[] sounds = new String[4];
-		sounds[0] = "/edu/etown/sounds/oof.wav";
-		sounds[1] = "/edu/etown/sounds/doh.wav";
-		sounds[2] = "/edu/etown/sounds/ungh.wav";
-		sounds[3] = "/edu/etown/sounds/whoa.wav";
 		
 		if(!canBeDamaged || isHurt || activePowerups.containsKey("invincibility")) {
 			System.out.println("entities: EntityLiving.java, didnt take damage");
@@ -105,7 +106,7 @@ public abstract class EntityLiving extends Entity{
 		}
 		else {
 			damageFromSource(source.attackDamage);
-			randomSound = (int) Math.floor(Math.random() * 4);
+			randomSound = (int) Math.floor(Math.random() * 4) + 3;
 			soundProcessor.playSound(sounds[randomSound]);
 			
 		}
