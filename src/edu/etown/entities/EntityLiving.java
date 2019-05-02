@@ -1,6 +1,7 @@
 package edu.etown.entities;
 
 import java.util.HashMap;
+
 import java.util.Iterator;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import edu.etown.level.Level;
 import edu.etown.powerups.Powerup;
 import edu.etown.powerups.PowerupEffect;
 import edu.etown.utilities.MathUtility;
+import edu.etown.sounds.SoundProcessor;
 
 public abstract class EntityLiving extends Entity{
 
@@ -91,6 +93,7 @@ public abstract class EntityLiving extends Entity{
 		}
 		else {
 			damageFromSource(source.attackDamage);
+			SoundProcessor.playSound("./src/oof.wav");
 		}
 	}
 

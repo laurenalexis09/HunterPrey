@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import edu.etown.main.HunterPrey;
 import edu.etown.utilities.MathUtility;
 import edu.etown.utilities.StdDraw;
+import edu.etown.sounds.SoundProcessor;
 
 public class StartMenu implements Menu{
 	Color color1 = new Color(126, 160, 255);
@@ -14,7 +15,8 @@ public class StartMenu implements Menu{
 	NewGameButton button;
 	HunterPrey game;
 
-	public StartMenu(HunterPrey Game){	
+	public StartMenu(HunterPrey Game){
+		SoundProcessor.playMusic("./src/bgm1.wav");
 		this.game = Game;
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int screenHeight = screenSize.height;
