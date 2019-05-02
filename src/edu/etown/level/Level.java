@@ -40,6 +40,7 @@ public class Level {
 		hunters = new Hunter[config.hunterAmount];
 		spawnPrey();
 		spawnHunters(config.hunterSpeed);
+		System.out.println(config.levelBiome);
 	}
 
 	public void update() {
