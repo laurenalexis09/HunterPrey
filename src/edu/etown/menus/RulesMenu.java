@@ -3,14 +3,12 @@ package edu.etown.menus;
 import java.awt.Font;
 
 import edu.etown.main.HunterPrey;
-import edu.etown.sounds.*;
 import edu.etown.utilities.MathUtility;
 import edu.etown.utilities.StdDraw;
 
 public class RulesMenu implements Menu{
 
 	NewGameButton button = new NewGameButton();
-	SoundProcessor soundProcessor = new SoundProcessor();
 	public static double bearRadius = 0.02;
 	double i = -0.1;
 	double j = 1.1;
@@ -19,7 +17,6 @@ public class RulesMenu implements Menu{
 
 	public RulesMenu(HunterPrey Game) {
 		this.game = Game;
-		soundProcessor.playSound("/edu/etown/sounds/press_start.wav");
 	}
 
 	public static double getRadius() {
