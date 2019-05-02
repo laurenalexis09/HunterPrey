@@ -16,6 +16,7 @@ public class HealthPowerup extends Powerup{
 	public void applyPowerupToEntity(EntityLiving entity){
 		entity.addHealth(healthBoost);
 		this.setDead();
+		System.out.println("Entity:HealthPowerup.java, spawned");
 	}
 	
 	public boolean isPowerupInstant() {

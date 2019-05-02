@@ -14,6 +14,7 @@ public class InvincibilityPowerup extends Powerup {
 	
 	public void applyPowerupToEntity(EntityLiving entity) {
 		this.setDead();
+		System.out.println("Entity:InvincibilityPowerup.java, spawned");
 	}
 	
 

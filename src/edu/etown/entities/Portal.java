@@ -19,6 +19,7 @@ public class Portal extends Entity{
 	
 	public void activatePortal() {
 		level.completeLevel();
+		System.out.println("Entities: Portal.java, portal is active");
 	}
 
 }

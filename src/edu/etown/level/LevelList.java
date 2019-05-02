@@ -13,9 +13,9 @@ public class LevelList {
 			new LevelConfiguration(7,.32,200, Biome.getBiome("Arctic")),
 			new LevelConfiguration(7,.33,200, Biome.getBiome("Arctic")),
 			new LevelConfiguration(8,.33,200, Biome.getBiome("Arctic")),
-			new LevelConfiguration(8,.33,200, Biome.getBiome("Random")),
-			new LevelConfiguration(8,.34,200, Biome.getBiome("Random")),
-			new LevelConfiguration(9,.34,200, Biome.getBiome("Random"))
+			//new LevelConfiguration(8,.33,200, Biome.getBiome("Random")),
+			//new LevelConfiguration(8,.34,200, Biome.getBiome("Random")),
+			//new LevelConfiguration(9,.34,200, Biome.getBiome("Random"))
 	};
 	
 	public static LevelConfiguration getLevelConfiguration(int number) {
