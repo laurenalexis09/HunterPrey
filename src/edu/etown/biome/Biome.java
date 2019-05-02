@@ -20,6 +20,7 @@ public abstract class Biome {
 	public static Biome getBiome(String input) {
 		if(input.equalsIgnoreCase("Forest")){
 			return new ForestBiome();
+			
 		}
 
 		if(input.equalsIgnoreCase("Arctic")){

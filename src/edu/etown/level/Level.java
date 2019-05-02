@@ -40,6 +40,7 @@ public class Level {
 		hunters = new Hunter[config.hunterAmount];
 		spawnPrey();
 		spawnHunters(config.hunterSpeed);
+		System.out.println(config.levelBiome);
 	}
 
 	public void update() {
@@ -137,6 +138,7 @@ public class Level {
 
 	public void spawnPortal() {
 		nextLevelPortal = new Portal(this,Math.random(),Math.random());
+		System.out.println("Portal Spawned");
 	}
 
 	public void completeLevel() {
